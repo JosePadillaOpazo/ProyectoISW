@@ -1,0 +1,43 @@
+{
+    "Educadora":{
+        "Rut":{
+            "tyoe":"Numbrer",
+            "required": true
+        },
+        "nombre":{
+            "tyoe":"String",
+            "required": true
+        },
+        "fecha_de_nac":{
+            "tyoe":"Date",
+            "required": true
+        },
+        "direccion":{
+            "tyoe":"String",
+            "required": true
+        },
+        "telefono1":{
+            "tyoe":"String",
+            "required": true
+        },
+        "telefono2":{
+            "tyoe":"String",
+            "required": true
+        },
+        "correo":{
+            "tyoe":"String",
+            "required": true
+        }
+
+    },
+    "Rutina":{
+        "fecha":{
+            "tyoe":"Date",
+            "required": true
+        },
+        "actividades":{
+            "tyoe":"String",
+            "required": true
+        }
+    }
+}
