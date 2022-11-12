@@ -18,5 +18,4 @@ mongoose.connect(process.env.DB,(err) =>
         }
         return console.log('Conectado a la base de datos')
     }
-
 );
