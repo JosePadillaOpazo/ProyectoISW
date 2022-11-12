@@ -264,7 +264,7 @@
 
     "Retiro":{
         "hora":{
-            "tyoe":"Time",
+            "type":"Date",
             "required": true
         },
         "parvulo":{
@@ -314,6 +314,4 @@
             "ref": "Apoderado"
         }
     }
-
-
 }
