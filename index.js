@@ -4,16 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-
 const rutapoderado = require('./routes/ApoderadoRoutes')
-
-
-app.use(cors())
-app.use(express.json());
-app.options('*', cors())
-
-app.use ('/api', rutapoderado);
-
 const EducadoraRoutes = require('./routes/EducadoraRoutes')
 const RutinaRoutes = require('./routes/RutinaRoutes')
 
@@ -22,6 +13,8 @@ app.use(express.json());
 app.options('*', cors())
 app.use('/api', EducadoraRoutes);
 app.use('/api', RutinaRoutes);
+
+app.use ('/api', rutapoderado);
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
