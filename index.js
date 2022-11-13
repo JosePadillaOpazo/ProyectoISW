@@ -4,6 +4,16 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+
+const rutapoderado = require('./routes/ApoderadoRoutes')
+
+
+app.use(cors())
+app.use(express.json());
+app.options('*', cors())
+
+app.use ('/api', rutapoderado);
+
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
 mongoose.set('useFindAndModify', false);
