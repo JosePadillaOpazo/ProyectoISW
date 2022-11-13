@@ -28,7 +28,51 @@ const BuscarRutina = (req, res) =>{
     )
 }
 
+const BuscarRutinaEspecifica = (req, res) =>{
+    const { id } = req.params;
+    Rutina.findById(id, (err, Rutina) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener rutina"})
+        }
+        if(!Rutina){
+            return res.status(404).send({message:"Error al encontrar rutina"})
+        }
+        return res.status(200).send(Rutina)
+    }
+   )
+}
+
+const UpdateRutina = (req, res) =>{
+    const { id } = req.params;
+    Rutina.findByIdAndUpdate(id, req.body, (err, Rutina) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener rutina"})
+        }
+        if(!Rutina){
+            return res.status(404).send({message:"Error al encontrar rutina"})
+        }
+        return res.status(200).send(Rutina)
+    }
+   )
+}
+
+const EliminarRutina = (req, res) =>{
+    const { id } = req.params;
+    Rutina.findByIdAndDelete(id, (err, Rutina) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener rutina"})
+        }
+        if(!Rutina){
+            return res.status(404).send({message:"Error al encontrar rutina"})
+        }
+        return res.status(200).send(Rutina)
+    }
+   )
+}
 module.exports = {
     CrearRutina,
-    BuscarRutina
+    BuscarRutina,
+    BuscarRutinaEspecifica,
+    UpdateRutina,
+    EliminarRutina
 }
