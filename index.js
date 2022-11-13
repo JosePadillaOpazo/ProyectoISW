@@ -14,6 +14,15 @@ app.options('*', cors())
 
 app.use ('/api', rutapoderado);
 
+const EducadoraRoutes = require('./routes/EducadoraRoutes')
+const RutinaRoutes = require('./routes/RutinaRoutes')
+
+app.use(cors())
+app.use(express.json());
+app.options('*', cors())
+app.use('/api', EducadoraRoutes);
+app.use('/api', RutinaRoutes);
+
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
 mongoose.set('useFindAndModify', false);
