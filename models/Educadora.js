@@ -22,10 +22,6 @@ const EducadoraSchema = new Schema(
             type: Number,
             required: true
         },
-        telefono2:{
-            type: Number,
-            required: true
-        },
         correo:{
             type: String,
             required: true

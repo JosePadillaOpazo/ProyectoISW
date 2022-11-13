@@ -264,7 +264,7 @@
 
     "Retiro":{
         "hora":{
-            "tyoe":"Time",
+            "tyoe":"Date",
             "required": true
         },
         "parvulo":{

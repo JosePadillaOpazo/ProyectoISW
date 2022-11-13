@@ -6,7 +6,11 @@ const RutinaSchema = new Schema(
             type: Date,
             default: Date.now()
         },
-        actividades:{
+        //grado:{
+        //    type: Schema.ObjectId,
+        //    ref: 'Grado'
+        //},
+        actividad:{
             type: String,
             required: true
         }
