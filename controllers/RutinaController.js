@@ -1,9 +1,10 @@
 const Rutina = require ('../models/Rutina');
 
 const CrearRutina = (req, res) =>{
-    const {actividad} = req.body;
+    const {grado,actividad} = req.body;
     const newRutina = new Rutina (
         {
+            grado,
             actividad
         }
     );

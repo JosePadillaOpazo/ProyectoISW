@@ -4,7 +4,9 @@ const EducadoraSchema = new Schema(
     {
         rut:{
             type: String,
-            required: true
+            required: true,
+            unique: true,
+            max: 14
         },
         nombre:{
             type: String,
@@ -26,10 +28,7 @@ const EducadoraSchema = new Schema(
             type: String,
             required: true
         }
-
     }
 );
 
 module.exports = mongoose.model('Educadora', EducadoraSchema);
-
-
