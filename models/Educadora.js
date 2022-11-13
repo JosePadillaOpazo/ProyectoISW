@@ -4,7 +4,9 @@ const EducadoraSchema = new Schema(
     {
         rut:{
             type: String,
-            required: true
+            required: true,
+            unique: true,
+            max: 14
         },
         nombre:{
             type: String,
@@ -19,10 +21,6 @@ const EducadoraSchema = new Schema(
             required: true
         },
         telefono1:{
-            type: Number,
-            required: true
-        },
-        telefono2:{
             type: Number,
             required: true
         },

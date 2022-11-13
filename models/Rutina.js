@@ -6,7 +6,15 @@ const RutinaSchema = new Schema(
             type: Date,
             default: Date.now()
         },
-        actividades:{
+        grado:{
+            type: String,
+            enum: [
+                "Menor",
+                "Intermedio",
+                "Mayor"
+            ]
+        },
+        actividad:{
             type: String,
             required: true
         }
