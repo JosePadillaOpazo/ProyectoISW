@@ -29,7 +29,7 @@ const getAsistenciaSimple = (_req, res) => {
 const getAsistencias = (_req, res) => {
     Asistencia.find()
     .populate('asistente_d')
-    .populate('parvulo_d')
+    //.populate('parvulo_d')
     .exec((err, asistencia) => {
         res.status(200).send({asistencia})
     })
