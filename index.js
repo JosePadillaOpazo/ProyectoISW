@@ -5,11 +5,13 @@ require('dotenv').config();
 
 const app = express();
 const asistenteRoutes = require('./routes/asistenteRoutes')
+const asistenciaRoutes = require('./routes/asistenciaRoutes')
 
 app.use(cors())
 app.use(express.json())
 app.options("*", cors())
 app.use('/api', asistenteRoutes)
+app.use('/api', asistenciaRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log('Server started and the url is http://localhost:' + process.env.PORT);

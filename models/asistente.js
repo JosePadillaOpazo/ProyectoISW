@@ -3,8 +3,7 @@ const Schema = mongoose.Schema
 const AsistenteSchema = new Schema({
     rut:{
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     nombre:{
         type: String,
@@ -14,12 +13,12 @@ const AsistenteSchema = new Schema({
         type: Date,
         required: true
     },
-    direcion:{
-        type: Number,
+    direccion:{
+        type: String,
         required: true
     },
     telefono:{
-        type: String
+        type: Number
     },
     correo:{
         type: String,
