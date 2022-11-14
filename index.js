@@ -4,15 +4,20 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-
+const rutaantecedente = require('./routes/AntecedenteRoutes')
+const rutadiscapacidad = require('./routes/DiscapacidadRoutes')
+const rutaenfermedad = require('./routes/EnfermedadRoutes')
 const rutapoderado = require('./routes/ApoderadoRoutes')
 
 
 app.use(cors())
 app.use(express.json());
-app.options('*', cors())
+app.options('*', cors());
 
+app.use('/api', rutaantecedente);
 app.use ('/api', rutapoderado);
+app.use ('/api', rutaenfermedad);
+app.use ('/api', rutadiscapacidad);
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
