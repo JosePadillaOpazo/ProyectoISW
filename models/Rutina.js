@@ -7,18 +7,13 @@ const RutinaSchema = new Schema(
             default: Date.now()
         },
         grado:{
-            type: String,
-            enum: [
-                "Menor",
-                "Intermedio",
-                "Mayor"
-            ]
+            type: Schema.ObjectId,
+            ref: 'Grado'
         },
         actividad:{
             type: String,
             required: true
         }
-
     }
 );
 

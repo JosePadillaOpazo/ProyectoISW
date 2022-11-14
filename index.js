@@ -6,12 +6,14 @@ require('dotenv').config();
 const app = express();
 const EducadoraRoutes = require('./routes/EducadoraRoutes')
 const RutinaRoutes = require('./routes/RutinaRoutes')
+const GradoRoutes = require('./routes/GradoRoutes')
 
 app.use(cors())
 app.use(express.json());
 app.options('*', cors())
 app.use('/api', EducadoraRoutes);
 app.use('/api', RutinaRoutes);
+app.use('/api', GradoRoutes);
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
