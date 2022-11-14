@@ -13,6 +13,9 @@ const RutinaRoutes = require('./routes/RutinaRoutes')
 const asistenteRoutes = require('./routes/asistenteRoutes')
 const asistenciaRoutes = require('./routes/asistenciaRoutes')
 const GradoRoutes = require('./routes/GradoRoutes')
+const rutaParvulos = require('./routes/ParvuloRoutes')
+const rutaMatriculas = require('./routes/MatriculaRoutes')
+
 
 app.use(cors())
 app.use(express.json());
@@ -26,19 +29,11 @@ app.use ('/api', rutaenfermedad);
 app.use ('/api', rutadiscapacidad);
 app.use('/api', asistenteRoutes)
 app.use('/api', asistenciaRoutes)
-
-
-
-const rutaParvulos = require('./routes/ParvuloRoutes')
-const rutaMatriculas = require('./routes/MatriculaRoutes')
-
-
-app.use(cors())
-app.use(express.json());
-app.options('*', cors())
-
 app.use ('/api', rutaMatriculas);
 app.use ('/api', rutaParvulos);
+
+
+
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
