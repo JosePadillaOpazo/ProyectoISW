@@ -6,7 +6,7 @@ const addAsistencia = (req, res) => {
     newAsistencia.titulo = req.body.titulo
     newAsistencia.comentario = req.body.comentario
     newAsistencia.asistente_d = req.body.idAsistente
-    //newAsistencia.parvulo_d = req.body.idParvulo
+    newAsistencia.parvulo_d = req.body.idParvulo
 
     newAsistencia.save((err, asistencia) => {
         if(err){
@@ -29,7 +29,7 @@ const getAsistenciaSimple = (_req, res) => {
 const getAsistencias = (_req, res) => {
     Asistencia.find()
     .populate('asistente_d')
-    //.populate('parvulo_d')
+    .populate('parvulo_d')
     .exec((err, asistencia) => {
         res.status(200).send({asistencia})
     })
@@ -51,13 +51,13 @@ const editAsistencia = (req, res) => {
     let titulo = req.body.titulo
     let comentario = req.body.comentario
     let asistente = req.body.asistente_d
-    //let parvulo = req.body.parvulo_d
+    let parvulo = req.body.parvulo_d
     Asistencia.findByIdAndUpdate(asistenciaID, {
         fecha: fecha,
         titulo: titulo,
         comentario: comentario,
         asistente: asistente,
-        //parvulo: parvulo
+        parvulo: parvulo
     }, (err, asistencia) => {
         if(err){
             return res.status(400).send({message: "Error al editar el perfil"})
