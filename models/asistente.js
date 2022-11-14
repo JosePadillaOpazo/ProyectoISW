@@ -5,7 +5,7 @@ const AsistenteSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        max:12
+        max:14
     },
     nombre:{
         type: String,
@@ -21,8 +21,7 @@ const AsistenteSchema = new Schema({
     },
     telefono:{
         type: Number,
-        required: true,
-        max: 9
+        required: true
     },
     correo:{
         type: String,
