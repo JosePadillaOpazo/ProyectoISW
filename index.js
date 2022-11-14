@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+const rutapoderado = require('./routes/ApoderadoRoutes')
 const EducadoraRoutes = require('./routes/EducadoraRoutes')
 const RutinaRoutes = require('./routes/RutinaRoutes')
 const GradoRoutes = require('./routes/GradoRoutes')
@@ -14,6 +15,8 @@ app.options('*', cors())
 app.use('/api', EducadoraRoutes);
 app.use('/api', RutinaRoutes);
 app.use('/api', GradoRoutes);
+
+app.use ('/api', rutapoderado);
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
@@ -29,5 +32,4 @@ mongoose.connect(process.env.DB,(err) =>
         }
         return console.log('Conectado a la base de datos')
     }
-
 );
