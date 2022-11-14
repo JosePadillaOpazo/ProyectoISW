@@ -16,12 +16,12 @@ const AsistenciaSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'asistente',
         required: true
-    },/*
+    },
     parvulo:{
         type: Schema.ObjectId,
         ref: 'parvulo',
         required: true
-    }*/
+    }
 })
 
 module.exports = mongoose.model('asistencia', AsistenciaSchema)
