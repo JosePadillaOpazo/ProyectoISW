@@ -17,7 +17,7 @@ const AsistenciaSchema = new Schema({
         ref: 'asistente',
         required: true
     },
-    parvulo:{
+    parvulo_d:{
         type: Schema.ObjectId,
         ref: 'Parvulo',
         required: true
