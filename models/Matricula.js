@@ -4,10 +4,10 @@ const MatriculaSchema = new Schema(
     {
         fecha:{
             type: Date,
-            required: true
+            default: Date.now
         },
         valor:{
-            type: String,
+            type: Number,
             required: true
         },
         abono:{
@@ -16,8 +16,22 @@ const MatriculaSchema = new Schema(
         },
         parvulo:{
             type: Schema.ObjectId,
-            ref: "Parvulo",
+            ref: 'Parvulo',
             required: true
+        },
+        apoderado:{
+            type: Schema.ObjectId,
+            ref: 'Apoderado',
+            required: true
+        },
+        apoderado2:{
+            type: Schema.ObjectId,
+            ref: 'Apoderado',
+
+        },
+        apoderado3:{
+            type: Schema.ObjectId,
+            ref: 'Apoderado',
         }
     }
 );

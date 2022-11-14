@@ -1,13 +1,15 @@
 const Matricula = require ('../models/Matricula');
 
 const CrearMatricula = (req, res) =>{
-    const {fecha,valor,abono,parvulo} = req.body;
+    const {valor,abono,parvulo,apoderado,apoderado2,apoderado3} = req.body;
     const newMatricula = new Matricula (
         {
-            fecha,
             valor,
             abono,
-            parvulo
+            parvulo,
+            apoderado,
+            apoderado2,
+            apoderado3
         }
     );
     newMatricula.save(
@@ -41,7 +43,7 @@ const ActualizarMatricula = (req, res) =>{
         if(!Matricula){
             return res.status(404).send({message:"Error al encontrar matricula"})
         }
-        return res.status(200).send(Parvulo)
+        return res.status(200).send(Matricula)
     }
    )
 }
@@ -52,7 +54,7 @@ const EliminarMatricula = (req, res) =>{
         if(err){
             return res.status(400).send({message:"Error al obtener matricula"})
         }
-        if(!Parvulo){
+        if(!Matricula){
             return res.status(404).send({message:"Error al encontrar matricula"})
         }
         return res.status(200).send(Matricula)

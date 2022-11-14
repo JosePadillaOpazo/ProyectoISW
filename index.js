@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 
-const rutapoderado = require('./routes/ApoderadoRoutes')
+
 const rutaParvulos = require('./routes/ParvuloRoutes')
 const rutaMatriculas = require('./routes/MatriculaRoutes')
 
@@ -14,7 +14,6 @@ app.use(cors())
 app.use(express.json());
 app.options('*', cors())
 
-app.use ('/api', rutapoderado);
 app.use ('/api', rutaMatriculas);
 app.use ('/api', rutaParvulos);
 

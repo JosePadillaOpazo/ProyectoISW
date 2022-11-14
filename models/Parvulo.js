@@ -4,7 +4,8 @@ const ParvuloSchema = new Schema(
     {
         rut:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         nombre:{
             type: String,
@@ -15,12 +16,8 @@ const ParvuloSchema = new Schema(
             required: true
         },
         grado:{
-            type: String,
-            enum:[
-                "Menor",
-                "Intermedio",
-                "Mayor"
-            ],
+            type: Schema.ObjectId,
+            ref:'Grado',
             required: true
         },
     }
