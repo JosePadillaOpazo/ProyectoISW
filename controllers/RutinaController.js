@@ -30,7 +30,7 @@ const CrearRutina = (req, res) =>{
 //}
 
 const BuscarRutina = (req, res) =>{
-    Rutina.find().populate({path :'Grado'}).exec((err, Rutina) => {
+    Rutina.find().populate({path :'grado'}).exec((err, Rutina) => {
             if(err){
                 return res.status(400).send({message:"Error al encontrar Rutina"})
             }
