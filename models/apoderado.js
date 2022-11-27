@@ -5,8 +5,8 @@ const ApoderadoSchema = new Schema(
         rut:{
             type: String,
             required: true,
-            unique: true
-            
+            unique: true,
+            match: /^[0-9]+.[0-9]+.[0-9]+-[0-9k]$/
         },
         nombre:{
             type: String,
@@ -32,7 +32,8 @@ const ApoderadoSchema = new Schema(
         },
         correo:{
             type: String,
-            required: true
+            required: true,
+            match: /^[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+$/
         }
     }
 );
