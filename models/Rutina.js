@@ -10,6 +10,10 @@ const RutinaSchema = new Schema(
             type: Schema.ObjectId,
             ref: 'Grado'
         },
+        educadora:{
+            type: Schema.ObjectId,
+            ref: 'Educadora'
+        },
         actividad:{
             type: String,
             required: true
