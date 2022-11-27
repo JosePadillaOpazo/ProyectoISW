@@ -4,8 +4,7 @@ const AsistenteSchema = new Schema({
     rut:{
         type: String,
         required: true,
-        unique: true,
-        max:12
+        unique: true
     },
     nombre:{
         type: String,
@@ -21,8 +20,7 @@ const AsistenteSchema = new Schema({
     },
     telefono:{
         type: Number,
-        required: true,
-        max: 9
+        required: true
     },
     correo:{
         type: String,

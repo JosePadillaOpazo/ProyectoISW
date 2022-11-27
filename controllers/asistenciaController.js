@@ -2,11 +2,9 @@ const Asistencia = require('../models/asistencia')
 
 const addAsistencia = (req, res) => {
     let newAsistencia = new Asistencia
-    newAsistencia.fecha = req.body.fecha
     newAsistencia.titulo = req.body.titulo
     newAsistencia.comentario = req.body.comentario
     newAsistencia.asistente_d = req.body.idAsistente
-    //newAsistencia.parvulo_d = req.body.idParvulo
 
     newAsistencia.save((err, asistencia) => {
         if(err){
@@ -29,7 +27,6 @@ const getAsistenciaSimple = (_req, res) => {
 const getAsistencias = (_req, res) => {
     Asistencia.find()
     .populate('asistente_d')
-    //.populate('parvulo_d')
     .exec((err, asistencia) => {
         res.status(200).send({asistencia})
     })
@@ -46,19 +43,8 @@ const delAsistencia = (req, res) => {
 }
 
 const editAsistencia = (req, res) => {
-    let asistenciaID = req.params.id
-    let fecha = req.body.fecha
-    let titulo = req.body.titulo
-    let comentario = req.body.comentario
-    let asistente = req.body.asistente_d
-    //let parvulo = req.body.parvulo_d
-    Asistencia.findByIdAndUpdate(asistenciaID, {
-        fecha: fecha,
-        titulo: titulo,
-        comentario: comentario,
-        asistente: asistente,
-        //parvulo: parvulo
-    }, (err, asistencia) => {
+    const { id } = req.params;
+    Asistencia.findByIdAndUpdate(id, req.body, (err, asistencia) => {
         if(err){
             return res.status(400).send({message: "Error al editar el perfil"})
         }
