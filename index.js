@@ -15,7 +15,7 @@ const asistenciaRoutes = require('./routes/asistenciaRoutes')
 const GradoRoutes = require('./routes/GradoRoutes')
 const rutaParvulos = require('./routes/ParvuloRoutes')
 const rutaMatriculas = require('./routes/MatriculaRoutes')
-
+const userRoutes = require('./routes/userRoutes')
 
 app.use(cors())
 app.use(express.json());
@@ -31,7 +31,7 @@ app.use('/api', asistenteRoutes)
 app.use('/api', asistenciaRoutes)
 app.use ('/api', rutaMatriculas);
 app.use ('/api', rutaParvulos);
-
+app.use('/api', userRoutes)
 
 
 
