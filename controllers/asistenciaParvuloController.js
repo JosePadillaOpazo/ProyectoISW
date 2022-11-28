@@ -1,10 +1,9 @@
-const asistenciaParvulo = require('../models/asistenciaParvulo')
 const AsistenciaParvulo = require('../models/asistenciaParvulo')
 
 const addAsistenciaParvulo = (req, res) => {
     let newAsistenciaParvulo = new AsistenciaParvulo
-    newAsistenciaParvulo.parvulo = req.body.idParvulo
     newAsistenciaParvulo.asistencia = req.body.idAsistencia
+    newAsistenciaParvulo.parvulo_r = req.body.idParvulo
 
     newAsistenciaParvulo.save((err, asistenciaParvulo) => {
         if(err){
@@ -15,20 +14,21 @@ const addAsistenciaParvulo = (req, res) => {
 }
 
 
-const getAsistenciaParvulo = (_req, res) => {
-    AsistenciaParvulo.find({}, (err, asistenciaParvulo) => {
+const delAsistenciaParvulo = (req, res) => {
+    let id = req.params.id
+    AsistenciaParvulo.findOneAndDelete(id, (err, asistenciaParvulo) => {
         if(err){
-            return res.status(400).send({message: "Error al mostrar los registros"})
+            return res.status(400).send({message: "Error al eliminar el registro"})
         }
-        return res.status(200).send(asistenciaParvulo)
+        return res.status(200).send({asistenciaParvulo})
     })
 }
 
-const delAsistenciaParvulo = (_req, res) => {
+const getAsistenciaParvulo = (req, res) => {
     AsistenciaParvulo.find()
-    .populate('parvulo')
     .populate('asistencia')
-    .exec((err, asistenciaParvulo) => {
+    .populate('parvulo_d')
+    .exec((_err, asistenciaParvulo) => {
         res.status(200).send({asistenciaParvulo})
     })
 }
@@ -43,9 +43,20 @@ const editAsistenciaParvulo = (req, res) => {
     })
 }
 
+const findAsistenciaParvulo = (req, res) => {
+    let idAsistencia = req.params.id
+    AsistenciaParvulo.findById(idAsistencia, (err, asistenciaParvulo) => {
+        if(err){
+            return res.status(400).send({message: "Error al mostrar el perfil"})
+        }
+        return res.status(200).send(asistenciaParvulo)
+    })
+}
+
 module.exports = {
     addAsistenciaParvulo,
     getAsistenciaParvulo,
     delAsistenciaParvulo,
-    editAsistenciaParvulo
+    editAsistenciaParvulo,
+    findAsistenciaParvulo
 }
