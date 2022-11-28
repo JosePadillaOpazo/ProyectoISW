@@ -3,6 +3,7 @@ const User = require('../models/user')
 const addUser = (req, res) => {
     let newUser = new User
     newUser.rute = req.body.rut
+    newUser.rol = req.body.rol
 
     newUser.save((err, user) => {
         if(err){
@@ -21,6 +22,15 @@ const getUser = (req, res) => {
     })
 }
 
+const delUser = (req, res) => {
+    User.find({}, (err, user) => {
+        if(err){
+            return res.status(400).send({message: "Error al elimiar el registro"})
+        }
+        return res.status(200).send({user})
+    })
+}
+
 const getUserPow = (_req, res) => {
     User.find()
     .populate('rute')
@@ -32,5 +42,6 @@ const getUserPow = (_req, res) => {
 module.exports = {
     addUser,
     getUser,
-    getUserPow
+    getUserPow,
+    delUser
 }

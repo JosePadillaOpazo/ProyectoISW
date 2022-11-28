@@ -2,13 +2,16 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
     rut:{
-        type: [Schema.Types.ObjectId],
-        refPath: 'model_type'
-    },
-    model_type:{
         type: String,
-        enum: ['Educadora', 'Apoderado', 'asistente']
+        required: true,
+        unique: true,
+        match: /^[0-9]{7,8}[-|‐]{1}[0-9kK]{1}$/
+    },
+    rol:{
+        type: String,
+        enum: ["Educadora", "Asistente", "Apoderado"]
     }
+    
 })
 
 
