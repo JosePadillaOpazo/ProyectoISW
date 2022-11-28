@@ -5,18 +5,16 @@ const AsistenciaSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    titulo:{
-        type: String,
+    parvulo:{
+        type: Schema.ObjectId,
+        ref: 'Parvulo',
         required: true
     },
-    comentario:{
-        type: String
-    },
-    asistente_d:{
+    asistencia:{
         type: Schema.ObjectId,
-        ref: 'asistente',
+        ref: 'asistencia',
         required: true
     }
 })
 
-module.exports = mongoose.model('asistencia', AsistenciaSchema)
+module.exports = mongoose.model('asistenciaParvulo', AsistenciaSchema);
