@@ -18,7 +18,9 @@ const AntecedenteSchema = new Schema(
         },
         cuidado:{
             type: String,
-            required: true
+            required: true,
+            match: /^([A-Za-z0-9]+( [A-Za-z0-9]+)+)$/
+
         }
     }
 );
