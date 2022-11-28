@@ -1,11 +1,13 @@
 const Rutina = require ('../models/Rutina');
 
 const CrearRutina = (req, res) =>{
-    const {grado,actividad} = req.body;
+    const {grado,educadora,actividad,evaluacion} = req.body;
     const newRutina = new Rutina (
         {
             grado,
-            actividad
+            educadora,
+            actividad,
+            evaluacion
         }
     );
     newRutina.save(
@@ -18,9 +20,9 @@ const CrearRutina = (req, res) =>{
     )
 }
 
+
 const BuscarRutina = (req, res) =>{
-    Rutina.find({},
-        (err, Rutina) => {
+    Rutina.find().populate({path :'grado educadora'}).exec((err, Rutina) => {
             if(err){
                 return res.status(400).send({message:"Error al encontrar Rutina"})
             }
