@@ -12,11 +12,17 @@ const RutinaSchema = new Schema(
         },
         educadora:{
             type: Schema.ObjectId,
-            ref: 'Educadora'
+            ref: 'Educadora',
         },
         actividad:{
             type: String,
-            required: true
+            required: true,
+            match: /^([a-zA-Z,]+( [a-zA-Z,]+)+)$/
+        },
+        evaluacion:{
+            type: String,
+            required: false,
+            match: /^([a-zA-Z ]+)$/
         }
     }
 );
