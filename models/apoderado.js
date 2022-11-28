@@ -5,12 +5,13 @@ const ApoderadoSchema = new Schema(
         rut:{
             type: String,
             required: true,
-            unique: true
-            
+            unique: true,
+            match: /^[0-9]{7,8}[-|‐]{1}[0-9kK]{1}$/
         },
         nombre:{
             type: String,
-            required: true
+            required: true,
+            match: /^([a-zA-Z]+( [a-zA-Z]+)+)$/
         },
         fecha_de_nac:{
             type: Date,
@@ -18,21 +19,23 @@ const ApoderadoSchema = new Schema(
         },
         direccion:{
             type: String,
-            required: true
+            required: true,
+            match: /^([A-Za-z0-9]+( [A-Za-z0-9]+)+)$/
         },
         telefono1:{
             type: Number,
-            required: true,
-            
+            required: true
+                      
         },
         telefono2:{
             type: Number,
-            required: true,
+            required: true
             
         },
         correo:{
             type: String,
-            required: true
+            required: true,
+            match: /^[a-zA-Z._-]+@[a-zA-Z]+.[a-zA-Z]+$/
         }
     }
 );
