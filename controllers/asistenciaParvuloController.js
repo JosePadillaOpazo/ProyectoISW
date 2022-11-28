@@ -3,7 +3,7 @@ const AsistenciaParvulo = require('../models/asistenciaParvulo')
 const addAsistenciaParvulo = (req, res) => {
     let newAsistenciaParvulo = new AsistenciaParvulo
     newAsistenciaParvulo.asistencia = req.body.idAsistencia
-    newAsistenciaParvulo.parvulo_r = req.body.idParvulo
+    newAsistenciaParvulo.parvulo = req.body.idParvulo
 
     newAsistenciaParvulo.save((err, asistenciaParvulo) => {
         if(err){
@@ -27,7 +27,7 @@ const delAsistenciaParvulo = (req, res) => {
 const getAsistenciaParvulo = (req, res) => {
     AsistenciaParvulo.find()
     .populate('asistencia')
-    .populate('parvulo_d')
+    .populate('Parvulo')
     .exec((_err, asistenciaParvulo) => {
         res.status(200).send({asistenciaParvulo})
     })
