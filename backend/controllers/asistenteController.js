@@ -47,19 +47,8 @@ const delAsistente = (req, res) => {
 }
 
 const editAsistente = (req, res) => {
-    let asistenteID = req.params.id
-    let name = req.body.name
-    let rut = req.body.rut
-    let phone = req.body.phone
-    let mail = req.body.mail
-    let address = req.body.address
-    Asistente.findByIdAndUpdate(asistenteID, {
-        name: name,
-        rut: rut,
-        phone: phone,
-        mail: mail,
-        address: address
-    }, (err, asistente) => {
+    const { id } = req.params;
+    Asistente.findByIdAndUpdate(id, req.body , (err, asistente) => {
         if(err){
             return res.status(400).send({message: "Error al editar el perfil"})
         }
