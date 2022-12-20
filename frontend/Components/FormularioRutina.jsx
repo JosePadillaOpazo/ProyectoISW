@@ -1,14 +1,21 @@
 import React from 'react'
-import{Button, Stack, Input, Container} from '@chakra-ui/react'
+import{Button, Stack, Input, Container, Select} from '@chakra-ui/react'
 
 const FormularioRutina = ({value}) => {
 
   return (
     <Container maxW='container.lg' marginTop={'40'}>
       <Stack spacing={7}>
+        <label>Fecha actual</label>
         <Input variant='filled' placeholder={value} value={value}/>
-        <Input variant='filled' placeholder='Actividad' type={'texr'}/>
-        <Input variant='filled' placeholder='Evaluación' type={'text'}/>
+        <label>Grado</label>
+        <Select variant='filled' placeholder='Eligir Grado' />
+        <label>Educadora</label>
+        <Select variant='filled' placeholder='Elegir Educadora' />
+        <label>Actividad</label>
+        <Input variant='filled' placeholder='Ingrese Actividad' />
+        <label>Evaluación</label>
+        <Input variant='filled' placeholder='Evaluación' />
       </Stack>
       <Stack maxW={'full'} alignItems='center'>
       <Button colorScheme='blue' marginTop={'7'} marginBottom='15' maxW={'150'}>Crear</Button>

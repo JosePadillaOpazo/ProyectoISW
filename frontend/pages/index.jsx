@@ -1,9 +1,14 @@
-import React from 'react'
+import React,{useState} from "react"
 
-const index = () => {
+function Datepick (){
+  const [date, setDate]=useState();
+
   return (
-    <div>index</div>
+    <>
+    <h1>Select date</h1>
+    <input type={'date'} onChange={e=>setDate(e.target.value)}></input>
+    </>
   )
 }
 
-export default index
+export default Datepick

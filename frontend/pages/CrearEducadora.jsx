@@ -6,7 +6,7 @@ const CrearEducadora = () => {
 
   return (
     <>
-    <Container maxW="container.lg" >
+    <Container maxW="container.lg" my='40'>
       <Stack spacing={5} my={'15'}>
         <Heading as='h1' size={'2xl'} align='center' textColor={'grey'}>Crear Educadora</Heading>
         <FormularioEducadora />
