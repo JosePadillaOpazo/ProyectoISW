@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr } from '@chakra-ui/react'
-import {getAsistentes} from '../data/asistente'
+import {getAsistentes, delAsistente} from '../data/asistente'
 import {useRouter} from 'next/router'
 
 const asistente = () => {
+  const router = useRouter()
   const [asistentes, setAsistentes] = useState([{
     _id:'',
     rut:'',
@@ -14,7 +15,7 @@ const asistente = () => {
     correo: ''
 
   }])
-  const router = useRouter()
+
 
   const contentTable = () => {
     return asistentes.map((asistente => (
@@ -26,10 +27,10 @@ const asistente = () => {
           <Td>{asistente.telefono}</Td>
           <Td>{asistente.correo}</Td>
           <Td>
-            <Button colorScheme={"yellow"} mr="2">
+            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistentes/${asistente._id}`)}>
               Editar
             </Button>
-            <Button colorScheme={"red"}>
+            <Button colorScheme={"red"} onClick={() => delAsistente(asistente)} >
               Eliminar
             </Button>
           </Td>
@@ -54,7 +55,7 @@ const asistente = () => {
       <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistente')}>Agregar asistente</Button>
       <Stack spacing={7}> 
         <Table variant="simple">
-          <Thead>
+          <Thead backgroundColor={"cyan.100"}>
             <Tr>
               <Td>RUT</Td>
               <Td>Nombre</Td>
@@ -65,7 +66,7 @@ const asistente = () => {
               <Td>Opciones</Td>
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody backgroundColor={"yellow.100"}>
             {contentTable()}
           </Tbody>
         </Table>

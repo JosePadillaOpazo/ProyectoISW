@@ -5,6 +5,7 @@ import {addAsistente} from '../data/asistente'
 
 
 const registroAsistente = () => {
+  const router = useRouter()
   const [boton, setBoton] = useState(false)
   const [asistente, setAsistente] = useState({
     rut:'',
@@ -22,7 +23,7 @@ const registroAsistente = () => {
     }else
       return "blue"
   }
-  const router = useRouter()
+  
 
   const handleChange = (e) => {
     setAsistente({
