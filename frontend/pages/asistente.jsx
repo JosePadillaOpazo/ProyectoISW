@@ -5,7 +5,7 @@ import {useRouter} from 'next/router'
 
 const asistente = () => {
   const [asistentes, setAsistentes] = useState([{
-    id:'',
+    _id:'',
     rut:'',
     nombre: '',
     fecha_de_nac: '',
@@ -47,8 +47,9 @@ const asistente = () => {
 
   return (
     <>
-    <Button colorScheme={"blackAlpha"} color="white" onClick={() => router.push('/')}>Volver</Button>
+    
     <Container maxW="container.xl" >
+      <Button colorScheme={"blackAlpha"} color="white" onClick={() => router.push('/')}>Volver</Button>
       <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistentes</Heading>
       <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistente')}>Agregar asistente</Button>
       <Stack spacing={7}> 

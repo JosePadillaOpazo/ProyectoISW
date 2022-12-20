@@ -5,11 +5,12 @@ const getAsistentes = async () => {
     return response
 }
 
-const addAsistente = async (asistente) => {
-    //console.log("Datos guardados: " + asistente)
-    const response = await axios.post(`${process.env.SERVIDOR}/asistente`, asistente);
+const addAsistente = (asistente) => {
+    const response = axios.post(`${process.env.SERVIDOR}/asistente`, asistente);
     return response
 }
+
+
 
 module.exports = {
     getAsistentes,

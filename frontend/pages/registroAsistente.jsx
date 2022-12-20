@@ -33,9 +33,11 @@ const registroAsistente = () => {
 
   const submitAsistente = (e) => {
     e.preventDefault()
-    const response = addAsistente(asistente)
-    console.log(response)
+    addAsistente(asistente).then(res => {
+      console.log(res)
+    })
   }
+
   return (
     <>
     <Container maxW="container.sm" >
@@ -43,30 +45,30 @@ const registroAsistente = () => {
         <Stack spacing={3}  my={20} justify="center"> 
             <FormControl>
                 <FormLabel>RUT</FormLabel>
-                <Input type="text" placeholder='RUT' name="rut" onChange={handleChange} />
+                <Input type="text" placeholder='RUT' name={"rut"} onChange={handleChange} />
             </FormControl>
             <FormControl>
                 <FormLabel>Nombre</FormLabel>
-                <Input type="text" placeholder='Nombre' name="name" onChange={handleChange} />
+                <Input type="text" placeholder='Nombre' name={"nombre"} onChange={handleChange} />
             </FormControl>
             <FormControl>
                 <FormLabel>Fecha de Nacimiento</FormLabel>
-                <Input type="date" name="fecha de nacimiento" onChange={handleChange} />
+                <Input type="date" name={"fecha_de_nac"} onChange={handleChange} />
             </FormControl>
             <FormControl>
                 <FormLabel>Direccion</FormLabel>
-                <Input type="address" placeholder='Direccion' name="direccion" onChange={handleChange} />
+                <Input type="address" placeholder='Direccion' name={"direccion"} onChange={handleChange} />
             </FormControl>
             <FormControl>
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup>
                     <InputLeftAddon children="+56"/>
-                    <Input type="tel" placeholder='Telefono' name="telefono" onChange={handleChange} />
+                    <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} />
                 </InputGroup>
             </FormControl>
             <FormControl>
                 <FormLabel>Correo Electronico</FormLabel>
-                <Input type="email" placeholder='Correo Electronico' name="correo" onChange={handleChange} />
+                <Input type="email" placeholder='Correo Electronico' name={"correo"} onChange={handleChange} />
             </FormControl>
       </Stack>
       <HStack>
