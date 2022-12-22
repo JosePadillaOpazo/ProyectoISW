@@ -7,7 +7,8 @@ const getAsistencias = async () => {
 }
 
 const addAsistencia = (asistencia) => {
-    const response = axios.post(`${process.env.SERVIDOR}/asistencia`, asistencia)
+    console.log(asistencia)
+    const response = axios.post(`${process.env.SERVIDOR}/asistencia`, asistencia);
     return response
 }
 

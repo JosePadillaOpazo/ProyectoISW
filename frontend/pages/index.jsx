@@ -9,8 +9,6 @@ const index = () => {
     <IndexAccessTemp alt="Registo de Asistentes" ruta={'./asistente'} imagen='https://blog.nimblr.ai/hubfs/Holly-Desk.png'/>
     <IndexAccessTemp alt="Asistencia" ruta={'./asistencia'} imagen='https://oportunidadenlinea.cl/wp-content/uploads/2021/07/fundacion-oportunidad_logo-asistencia-2021.png' />
     </Container>
-
-    
     </>
     
     

@@ -7,23 +7,22 @@ import {addAsistencia} from '../data/asistencia'
 const registroAsistencia = () => {
   const router = useRouter()
   const [asistentes, setAsistentes] = useState([])
-  const [asistencias, setAsistencias] = useState({
+  const [asistencia, setAsistencia] = useState({
     titulo:'',
     idAsistente: '',
-    comentario: '',
-    fecha: ''
+    comentario: ''
   })
 
   const contentSelect = () => {
     return asistentes.map((asistentes => (
-      <option value={asistentes.nombre} key={asistentes._id}>{asistentes.nombre}</option>
+      <option value={asistentes._id} key={asistentes._id}>{asistentes.nombre}</option>
     )
     ))
   }
 
   const handleChange = (e) => {
-    setAsistencias({
-        ...asistencias,
+    setAsistencia({
+        ...asistencia,
         [e.target.name]: e.target.value
     })
   }
@@ -36,7 +35,7 @@ const registroAsistencia = () => {
 
   const submitAsistencia = (e) => {
     e.preventDefault()
-    addAsistencia(asistencias).then(res => {
+    addAsistencia(asistencia).then(res => {
       console.log(res)
     })
   }
@@ -53,13 +52,13 @@ const registroAsistencia = () => {
             </FormControl>
             <FormControl>
                 <FormLabel>Asistente</FormLabel>
-                <Select placeholder='Seleccione a una asistente...' name={'idAsistente'}>
+                <Select placeholder='Seleccione a una asistente...' name={'idAsistente'} onChange={handleChange}>
                   {contentSelect()}
                 </Select>
             </FormControl>
             <FormControl>
                 <FormLabel></FormLabel>
-                <Textarea type="date" placeholder='Comentario' name={"fecha_de_nac"} onChange={handleChange} />
+                <Textarea type="date" placeholder='Comentario' name={"comentario"} onChange={handleChange} />
             </FormControl>
       </Stack>
       <HStack>
