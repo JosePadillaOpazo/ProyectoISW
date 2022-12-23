@@ -12,8 +12,14 @@ const addAsistencia = (asistencia) => {
     return response
 }
 
+const delAsistencia = async (asistencia) => {
+    //console.log(`${process.env.SERVIDOR}/asistencia/delete/${asistencia}`)
+    const response = await axios.delete(`${process.env.SERVIDOR}/asistencia/delete/${asistencia}`);
+    return response
+}
 
 module.exports = {
     getAsistencias,
-    addAsistencia
+    addAsistencia,
+    delAsistencia
 }

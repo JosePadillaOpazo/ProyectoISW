@@ -1,10 +1,12 @@
-import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody } from '@chakra-ui/react'
+import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialog, AlertDialogBody, useToast } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {useRouter} from 'next/router'
-import {getAsistencias} from '../data/asistencia'
+import {getAsistencias, delAsistencia} from '../data/asistencia'
 
 
 const asistencia = () => {
+    const router = useRouter()
+    const toast = useToast()
     const [asistencias, setAsistencias] = useState([{
       _id:'',
       titulo:'',
@@ -12,7 +14,23 @@ const asistencia = () => {
       fecha: '',
       asistente_d: ''
     }])
-    const router = useRouter()
+
+
+    const deleteAsistencia = (as) => {
+      delAsistencia(as._id).then(res => {
+        if(res.status == '200'){
+          toast({
+          title: 'Asistencia eliminada',
+          description: "La asistencia se ha eliminado correctamente.",
+          status: 'warning',
+          duration: 2000,
+          isClosable: true,
+        })
+      }
+      
+      })
+      
+    }
 
     const contentTable = () => {
       return asistencias.map((asistencia => (
@@ -22,10 +40,10 @@ const asistencia = () => {
           <Td>{asistencia.fecha}</Td>
           <Td>{asistencia.asistente_d.nombre}</Td>
           <Td>
-            <Button colorScheme={"yellow"} mr="2">
-              Editar
+            <Button colorScheme={"telegram"} mr="2">
+              Parvulos
             </Button>
-            <Button colorScheme={"red"}>
+            <Button colorScheme={"red"} onClick={() => deleteAsistencia(asistencia)}>
               Eliminar
             </Button>
           </Td>
@@ -35,12 +53,12 @@ const asistencia = () => {
       
     }
 
+
     useEffect(() => {
       getAsistencias().then(res => {
         setAsistencias(res.data.asistencia)
-        //console.log(res.data.asistencia)
       })
-    }, [])
+    }, [asistencias])
 
   return (
     <>

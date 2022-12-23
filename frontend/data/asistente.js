@@ -17,9 +17,9 @@ const editAsistente = async (id) => {
 }
 
 const delAsistente = async (asistente) => {
-    console.log(`${process.env.SERVIDOR}/asistente/delete/${asistente._id}`)
-    //const response = axios.delete(`${process.env.SERVIDOR}/asistente/delete/${asistente._id}`);
-    //return response
+    //console.log(`${process.env.SERVIDOR}/asistente/delete/${asistente._id}`)
+    const response = axios.delete(`${process.env.SERVIDOR}/asistente/delete/${asistente}`);
+    return response
 }
 
 

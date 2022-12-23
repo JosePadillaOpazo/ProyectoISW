@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Button, color, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack } from '@chakra-ui/react'
+import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast } from '@chakra-ui/react'
 import {useRouter} from 'next/router'
 import {addAsistente} from '../data/asistente'
 
 
 const registroAsistente = () => {
   const router = useRouter()
+  const toast = useToast()
   const [boton, setBoton] = useState(false)
   const [asistente, setAsistente] = useState({
     rut:'',
@@ -35,7 +36,16 @@ const registroAsistente = () => {
   const submitAsistente = (e) => {
     e.preventDefault()
     addAsistente(asistente).then(res => {
-      console.log(res)
+      if(res.status == '200'){
+        toast({
+        title: 'Asistente registrado',
+        description: "El asistente se ha registrado correctamente.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+      router.push('./asistente')
+    }
     })
   }
 

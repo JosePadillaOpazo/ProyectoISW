@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr } from '@chakra-ui/react'
+import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getAsistentes, delAsistente} from '../data/asistente'
 import {useRouter} from 'next/router'
 
 const asistente = () => {
   const router = useRouter()
+  const toast = useToast()
   const [asistentes, setAsistentes] = useState([{
     _id:'',
     rut:'',
@@ -16,6 +17,19 @@ const asistente = () => {
 
   }])
 
+  const deleteAsistente = (as) => {
+    delAsistente(as._id).then(res => {
+      if(res.status == '200'){
+        toast({
+        title: 'Asistente eliminado',
+        description: "El Asistente se ha eliminado correctamente.",
+        status: 'warning',
+        duration: 2000,
+        isClosable: true,
+      })
+    }
+    })
+  }
 
   const contentTable = () => {
     return asistentes.map((asistente => (
@@ -30,7 +44,7 @@ const asistente = () => {
             <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistentes/${asistente._id}`)}>
               Editar
             </Button>
-            <Button colorScheme={"red"} onClick={() => delAsistente(asistente)} >
+            <Button colorScheme={"red"} onClick={() => deleteAsistente(asistente)} >
               Eliminar
             </Button>
           </Td>
@@ -40,11 +54,12 @@ const asistente = () => {
   }
 
 
+
   useEffect(() => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })
-  }, [])
+  }, [asistentes])
 
   return (
     <>
