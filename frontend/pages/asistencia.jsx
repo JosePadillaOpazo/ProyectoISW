@@ -63,7 +63,6 @@ const asistencia = () => {
   return (
     <>
     <Container maxW={"container.xl"}>
-        <Button colorScheme={"blackAlpha"} color="white" onClick={() => router.push('/')}>Volver</Button>
         <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistencia</Heading>
         <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
         <Stack spacing={5}>
