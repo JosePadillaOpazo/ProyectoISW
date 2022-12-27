@@ -15,6 +15,19 @@ const addAsistencia = (req, res) => {
 
 }
 
+const getAsistencia = (req, res) => {
+    let asistenciaID = req.params.id;
+    Asistencia.findById(asistenciaID)
+    .populate('asistente_d')
+    .exec((err, asistencia) => {
+        if(err){
+            return res.status(400).send({message: "Error al mostrar el registro"})
+        }
+        return res.status(200).send(asistencia)
+    })
+
+}
+
 const getAsistenciaSimple = (_req, res) => {
     Asistencia.find({}, (err, asistencia) => {
         if(err){
@@ -57,5 +70,6 @@ module.exports = {
     getAsistencias,
     delAsistencia,
     editAsistencia,
-    getAsistenciaSimple
+    getAsistenciaSimple,
+    getAsistencia
 }

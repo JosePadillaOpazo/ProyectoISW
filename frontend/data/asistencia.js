@@ -7,7 +7,7 @@ const getAsistencias = async () => {
 }
 
 const addAsistencia = (asistencia) => {
-    console.log(asistencia)
+    //console.log(asistencia)
     const response = axios.post(`${process.env.SERVIDOR}/asistencia`, asistencia);
     return response
 }
@@ -18,8 +18,21 @@ const delAsistencia = async (asistencia) => {
     return response
 }
 
+const findAsistencia = async (id) => {
+    //console.log(id.asistencia)
+    const response = axios.get(`${process.env.SERVIDOR}/asistencia/find/${id.asistencia}`);
+    return response
+}
+
+const findAsistenciaParvulo = async (id) => {
+    const response = axios.get(`${process.env.SERVIDOR}/asistenciasParvulos`);
+    return response
+}
+
 module.exports = {
     getAsistencias,
     addAsistencia,
-    delAsistencia
+    delAsistencia,
+    findAsistencia,
+    findAsistenciaParvulo
 }

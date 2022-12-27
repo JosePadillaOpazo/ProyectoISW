@@ -10,8 +10,8 @@ const addAsistente = (asistente) => {
     return response
 }
 
-const editAsistente = async (id) => {
-    console.log(id.asistente)
+const findAsistente = async (id) => {
+    //console.log(id.asistente)
     const response = axios.get(`${process.env.SERVIDOR}/asistente/find/${id.asistente}`);
     return response
 }
@@ -26,6 +26,6 @@ const delAsistente = async (asistente) => {
 module.exports = {
     getAsistentes,
     addAsistente,
-    editAsistente,
+    findAsistente,
     delAsistente
 }

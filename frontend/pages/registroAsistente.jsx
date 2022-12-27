@@ -41,7 +41,7 @@ const registroAsistente = () => {
         title: 'Asistente registrado',
         description: "El asistente se ha registrado correctamente.",
         status: 'success',
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       })
       router.push('./asistente')

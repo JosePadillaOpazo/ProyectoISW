@@ -3,6 +3,9 @@ import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, Sele
 import {useRouter} from 'next/router'
 import {getAsistentes} from '../data/asistente'
 import {addAsistencia} from '../data/asistencia'
+import InputForm from '../components/InputForm'
+import TextareaForm from '../components/TextareaForm'
+import SelectForm from '../components/SelectForm'
 
 const registroAsistencia = () => {
   const router = useRouter()
@@ -36,6 +39,7 @@ const registroAsistencia = () => {
 
   const submitAsistencia = (e) => {
     e.preventDefault()
+    console.log(asistencia)
     addAsistencia(asistencia).then(res => {
       if(res.status == '200'){
           toast({
@@ -48,41 +52,24 @@ const registroAsistencia = () => {
         router.push('./asistencia')
       }
     })
-    
   }
 
 
   return (
     <>
     <Container maxW="container.sm" >
-        <Heading as="h1" size="2xl" textAlign="center" my={20} >Registro de Asistencia</Heading>
-        <Stack spacing={3}  my={20} justify="center"> 
-            <FormControl>
-                <FormLabel>Titulo</FormLabel>
-                <Input type="text" placeholder='Titulo' name={"titulo"} onChange={handleChange} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Asistente</FormLabel>
-                <Select placeholder='Seleccione a una asistente...' name={'idAsistente'} onChange={handleChange}>
-                  {contentSelect()}
-                </Select>
-            </FormControl>
-            <FormControl>
-                <FormLabel></FormLabel>
-                <Textarea type="date" placeholder='Comentario' name={"comentario"} onChange={handleChange} />
-            </FormControl>
+      <Heading as="h1" size="2xl" textAlign="center" my={20} >Registro de Asistencia</Heading>
+      <Stack spacing={3}  my={20} justify="center"> 
+          <InputForm name="titulo" type="text" placeholder="Nombre de la Clase" handleChange={handleChange} label="Titulo"/>
+          <SelectForm name="idAsistente" placeholder="Seleccione a una asistente..." handleChange={handleChange} content={contentSelect()}/>
+          <TextareaForm name="comentario" placeholder="Comentario" handleChange={handleChange} label="Comentario"/>
       </Stack>
       <HStack>
         <Button colorScheme={"green"} onClick={submitAsistencia} >Guardar</Button>
         <Button colorScheme={"yellow"} onClick={() => router.push('./asistencia')}>Regresar</Button>
       </HStack>
-      
     </Container>
-
     </>
-    
-    
-    
   )
 }
 

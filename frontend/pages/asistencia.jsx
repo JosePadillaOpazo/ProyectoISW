@@ -1,12 +1,11 @@
-import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialog, AlertDialogBody, useToast } from '@chakra-ui/react'
+import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody} from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {useRouter} from 'next/router'
 import {getAsistencias, delAsistencia} from '../data/asistencia'
-
+import Swal from 'sweetalert2'
 
 const asistencia = () => {
     const router = useRouter()
-    const toast = useToast()
     const [asistencias, setAsistencias] = useState([{
       _id:'',
       titulo:'',
@@ -15,19 +14,26 @@ const asistencia = () => {
       asistente_d: ''
     }])
 
-
     const deleteAsistencia = (as) => {
-      delAsistencia(as._id).then(res => {
-        if(res.status == '200'){
-          toast({
-          title: 'Asistencia eliminada',
-          description: "La asistencia se ha eliminado correctamente.",
-          status: 'warning',
-          duration: 2000,
-          isClosable: true,
-        })
-      }
-      
+      Swal.fire({
+        title: 'Estas seguro de eliminar la asistencia?',
+        text: "Si la borras no es posible recuperarla",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          delAsistencia(as._id).then(res => {
+            Swal.fire(
+              'Borrado!',
+              'Se elimino con exito la asistencia.',
+              'success'
+            )
+          })
+        }
       })
       
     }
@@ -40,8 +46,8 @@ const asistencia = () => {
           <Td>{asistencia.fecha}</Td>
           <Td>{asistencia.asistente_d.nombre}</Td>
           <Td>
-            <Button colorScheme={"telegram"} mr="2">
-              Parvulos
+            <Button colorScheme={"telegram"} mr="2" onClick={() => router.push(`./view/${asistencia._id}`)}>
+              Asistencia
             </Button>
             <Button colorScheme={"red"} onClick={() => deleteAsistencia(asistencia)}>
               Eliminar
@@ -63,8 +69,8 @@ const asistencia = () => {
   return (
     <>
     <Container maxW={"container.xl"}>
-        <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistencia</Heading>
-        <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
+        <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistencia de la Sala Cuna</Heading>
+        <Button colorScheme={"green"} mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
         <Stack spacing={5}>
           <Table variant="simple">
             <Thead backgroundColor={"cyan.100"}>

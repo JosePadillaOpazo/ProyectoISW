@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getAsistentes, delAsistente} from '../data/asistente'
 import {useRouter} from 'next/router'
+import Swal from 'sweetalert2'
 
 const asistente = () => {
   const router = useRouter()
-  const toast = useToast()
   const [asistentes, setAsistentes] = useState([{
     _id:'',
     rut:'',
@@ -18,18 +18,29 @@ const asistente = () => {
   }])
 
   const deleteAsistente = (as) => {
-    delAsistente(as._id).then(res => {
-      if(res.status == '200'){
-        toast({
-        title: 'Asistente eliminado',
-        description: "El Asistente se ha eliminado correctamente.",
-        status: 'warning',
-        duration: 2000,
-        isClosable: true,
-      })
-    }
+    Swal.fire({
+      title: 'Estas seguro de eliminar la asistente?',
+      text: "Si la borras no es posible recuperar la informacion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        delAsistente(as._id).then(res => {
+          Swal.fire(
+            'Borrado!',
+            'Se elimino con exito la asistente.',
+            'success'
+          )
+        })
+      }
     })
   }
+
+  
 
   const contentTable = () => {
     return asistentes.map((asistente => (
@@ -41,7 +52,7 @@ const asistente = () => {
           <Td>{asistente.telefono}</Td>
           <Td>{asistente.correo}</Td>
           <Td>
-            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistentes/${asistente._id}`)}>
+            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./update/${asistente._id}`)}>
               Editar
             </Button>
             <Button colorScheme={"red"} onClick={() => deleteAsistente(asistente)} >
