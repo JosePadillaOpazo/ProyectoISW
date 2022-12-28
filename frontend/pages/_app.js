@@ -1,10 +1,7 @@
 import '../styles/globals.css'
-import '../styles/navbar.css'
 import '../styles/style.css'
 import { ChakraProvider } from '@chakra-ui/react'
-import Navbar from './layout/Navbar'
-
-
+import Navbar from '../components/Navbar'
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>

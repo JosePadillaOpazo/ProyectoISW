@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, Select, Stack, Textarea, Toast, useToast } from '@chakra-ui/react'
+import { Button, Container, Heading, HStack, useToast, Stack } from '@chakra-ui/react'
 import {useRouter} from 'next/router'
 import {getAsistentes} from '../data/asistente'
 import {addAsistencia} from '../data/asistencia'

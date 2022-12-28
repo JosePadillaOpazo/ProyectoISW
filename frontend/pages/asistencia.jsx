@@ -36,6 +36,7 @@ const asistencia = () => {
         }
       })
       
+      
     }
 
     const contentTable = () => {
@@ -59,11 +60,11 @@ const asistencia = () => {
       
     }
 
-
     useEffect(() => {
       getAsistencias().then(res => {
         setAsistencias(res.data.asistencia)
       })
+
     }, [asistencias])
 
   return (
@@ -73,7 +74,7 @@ const asistencia = () => {
         <Button colorScheme={"green"} mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
         <Stack spacing={5}>
           <Table variant="simple">
-            <Thead backgroundColor={"cyan.100"}>
+            <Thead>
               <Tr>
                 <Td>Titulo</Td>
                 <Td>Comentario</Td>
@@ -82,7 +83,7 @@ const asistencia = () => {
                 <Td>Opciones</Td>
               </Tr>
             </Thead>
-            <Tbody backgroundColor={"yellow.100"}>
+            <Tbody>
               {contentTable()}
             </Tbody>
           </Table>

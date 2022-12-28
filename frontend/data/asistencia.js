@@ -24,15 +24,35 @@ const findAsistencia = async (id) => {
     return response
 }
 
-const findAsistenciaParvulo = async (id) => {
+const findAsistenciaParvulo = async () => {
     const response = axios.get(`${process.env.SERVIDOR}/asistenciasParvulos`);
     return response
 }
 
+const getParvulos = async () => {
+    //console.log(`${process.env.SERVIDOR}/parvulo/search`)
+    const response = await axios.get(`${process.env.SERVIDOR}/parvulo/search`);
+    return response
+}
+
+const addParvuloAsistencia = (asistencia) => {
+    //console.log(asistencia)
+    const response = axios.post(`${process.env.SERVIDOR}/asistenciaParvulo`, asistencia);
+    return response
+}
+
+const delParvuloAsistencia = async (asistencia) => {
+    console.log(`${process.env.SERVIDOR}/asistenciaParvulo/delete/${asistencia}`)
+    const response = await axios.delete(`${process.env.SERVIDOR}/asistenciaParvulo/delete/${asistencia}`);
+    return response
+}
 module.exports = {
     getAsistencias,
     addAsistencia,
     delAsistencia,
     findAsistencia,
-    findAsistenciaParvulo
+    getParvulos,
+    findAsistenciaParvulo,
+    addParvuloAsistencia,
+    delParvuloAsistencia
 }

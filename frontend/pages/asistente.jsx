@@ -70,17 +70,17 @@ const asistente = () => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })
+    
   }, [asistentes])
 
   return (
     <>
-    
     <Container maxW="container.xl" >
       <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistentes</Heading>
       <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistente')}>Agregar asistente</Button>
       <Stack spacing={7}> 
         <Table variant="simple">
-          <Thead backgroundColor={"cyan.100"}>
+          <Thead>
             <Tr>
               <Td>RUT</Td>
               <Td>Nombre</Td>
@@ -91,7 +91,7 @@ const asistente = () => {
               <Td>Opciones</Td>
             </Tr>
           </Thead>
-          <Tbody backgroundColor={"yellow.100"}>
+          <Tbody>
             {contentTable()}
           </Tbody>
         </Table>
