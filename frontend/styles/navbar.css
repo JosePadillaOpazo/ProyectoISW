@@ -7,17 +7,37 @@ body{
 }
 
 .nav{
-    background-color: rgba(51, 165, 159, 0.938);
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
     padding: 0 1rem;
+    background: -webkit-linear-gradient(
+        to right,
+        #b7950b ,
+        #f1c40f,
+        #2ecc71,
+        #27ae60,
+        #16a085,
+        #1abc9c,
+        #1abc9c  
+    );
+    background: linear-gradient(
+        to right,
+        #b7950b ,
+        #f1c40f,
+        #2ecc71,
+        #27ae60,
+        #16a085,
+        #1abc9c,
+        #1abc9c  
+    );
 }
 
 .site-title{
     font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .nav ul{
@@ -43,5 +63,6 @@ body{
 
 .nav li:hover {
     background-color: rgba(32, 114, 110, 0.938);
+    margin-block: 5px;
 }
 

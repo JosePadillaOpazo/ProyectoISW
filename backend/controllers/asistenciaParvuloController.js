@@ -27,7 +27,7 @@ const delAsistenciaParvulo = (req, res) => {
 const getAsistenciaParvulo = (req, res) => {
     AsistenciaParvulo.find()
     .populate('asistencia')
-    .populate('Parvulo')
+    .populate('parvulo')
     .exec((_err, asistenciaParvulo) => {
         res.status(200).send({asistenciaParvulo})
     })

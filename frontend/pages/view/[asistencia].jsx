@@ -15,17 +15,21 @@ export const getServerSideProps = async (context) => {
 
 
 const mostrar = ({asistencia, asistenciaParvulo }) => {
-    console.log(asistencia)
-    //console.log(asistenciaParvulo.asistenciaParvulo[0].asistencia)
-    
-  
     const contentAsistencia = () => {
-      return asistenciaParvulo.asistenciaParvulo.map((asistencia => (
-        console.log(asistencia.asistencia._id)
-        /*<Tr key={asistencia._id}>
-            <Td>{asistencia.asistenciaParvulo.asistencia}</Td>
-        </Tr>*/
-      )))
+      return asistenciaParvulo.asistenciaParvulo.map((ae => {
+        if(ae.asistencia._id == asistencia._id){
+          return (
+            <Tr key={ae._id}>
+            <Td>{ae.parvulo.nombre}</Td>
+            <Td>{ae.fecha}</Td>
+            <Td>
+              <Button colorScheme="red">Eliminar</Button>
+            </Td>
+          </Tr>
+          )
+        }
+      }
+      ))
     }
 
   return (
@@ -37,9 +41,10 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
       <Button colorScheme={"green"} mb="10" >Registrar asistencia</Button>
       <Stack>
         <Table>
-          <Thead backgroundColor={"cyan.100"}>
+          <Thead>
             <Tr>
               <Td>Parvulo</Td>
+              <Td>Hora de llegada</Td>
               <Td>Opciones</Td>
             </Tr>
           </Thead>

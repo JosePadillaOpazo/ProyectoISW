@@ -1,8 +1,22 @@
 .home-page-title{
     font-size: 100px;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .home-page-img{
     margin-inline: 30%;
+}
+
+Thead{
+    background-color: rgba(0, 255, 255, 0.438);
+    border-bottom: 2px solid black;
+}
+
+Tbody{
+    background-color: rgba(255, 255, 0, 0.322)
+}
+
+Table{
+    border: 2px solid black;
 }
