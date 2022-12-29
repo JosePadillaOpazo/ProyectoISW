@@ -1,7 +1,7 @@
 import {useState} from 'react'
-import {findAsistente, updateAsistente} from '../../data/asistente'
+import {findAsistente, updateAsistente} from '../../../data/asistente'
 import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast } from '@chakra-ui/react'
-import InputForm from '../../components/InputForm'
+import InputForm from '../../../components/InputForm'
 import { useRouter } from 'next/router'
 
 export const getServerSideProps = async (context) => {
@@ -28,7 +28,6 @@ const editar = ({data}) => {
 
   const submitAsistente = (e) => {
     e.preventDefault()
-    console.log("ID del Asistente: ", asistente , "\nDatos actualizados: ", asistentec)
     updateAsistente(asistente, asistentec).then(res => {
       if(res.status == '200'){
         toast({
@@ -38,7 +37,7 @@ const editar = ({data}) => {
           duration: 2000,
           isClosable: true,
         })
-        router.push('../asistente')
+        router.push('/asistente')
       }
     })
   }
@@ -63,7 +62,7 @@ const editar = ({data}) => {
       </Stack>
       <HStack>
         <Button colorScheme={"green"} onClick={submitAsistente}>Confirmar</Button>
-        <Button colorScheme={"yellow"} onClick={() => router.push('../asistente')}>Cancelar</Button>
+        <Button colorScheme={"yellow"} onClick={() => router.back()}>Cancelar</Button>
       </HStack>
       
     </Container>

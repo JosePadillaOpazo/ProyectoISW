@@ -45,7 +45,7 @@ const asistencia = () => {
           <Td>{asistencia.fecha.substring(0,10)}</Td>
           <Td>{asistencia.asistente_d.nombre}</Td>
           <Td>
-            <Button colorScheme={"telegram"} mr="2" onClick={() => router.push(`./view/${asistencia._id}`)}>
+            <Button colorScheme={"telegram"} mr="2" onClick={() => router.push(`./asistencia/view/${asistencia._id}`)}>
               Asistencia
             </Button>
             <Button colorScheme={"red"} onClick={() => deleteAsistencia(asistencia)}>
@@ -69,7 +69,7 @@ const asistencia = () => {
     <>
     <Container maxW={"container.xl"}>
         <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistencia de la Sala Cuna</Heading>
-        <Button colorScheme={"green"} mb={10} onClick={() => router.replace('./registroAsistencia') }>Agregar asistencia</Button>
+        <Button colorScheme={"green"} mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
         <Stack spacing={5}>
           <Table variant="simple">
             <Thead>

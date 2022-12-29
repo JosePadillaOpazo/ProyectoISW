@@ -12,10 +12,10 @@ const Navbar = () => {
             </a>
             <ul>
                 <li>
-                    <a onClick={() => router.replace('../asistente')}>Asistente</a>
+                    <a onClick={() => router.replace('/asistente')}>Asistente</a>
                 </li>
                 <li>
-                    <a onClick={() => router.replace('../asistencia')}>Asistencia</a>
+                    <a onClick={() => router.replace('/asistencia')}>Asistencia</a>
                 </li>
             </ul>
         </nav>

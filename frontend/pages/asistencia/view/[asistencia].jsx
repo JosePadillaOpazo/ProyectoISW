@@ -1,8 +1,8 @@
 import { Container,useToast,  Heading, Stack,Text , Table, Thead, Tr, Td, Tbody, Button, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, ModalFooter, HStack, Spacer } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import {findAsistencia, findAsistenciaParvulo, getParvulos, addParvuloAsistencia, delParvuloAsistencia} from '../../data/asistencia'
+import {findAsistencia, findAsistenciaParvulo, getParvulos, addParvuloAsistencia, delParvuloAsistencia} from '../../../data/asistencia'
 import { useRouter } from 'next/router'
-import SelectForm from '../../components/SelectForm'
+import SelectForm from '../../../components/SelectForm'
 import Swal from 'sweetalert2'
 
 export const getServerSideProps = async (context) => {
@@ -42,7 +42,6 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             )
           }
         }else {
-          console.log(ae._id)
           delParvuloAsistencia(ae._id)
         }
       }
@@ -70,14 +69,22 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           delParvuloAsistencia(as._id).then(res => {
-            Swal.fire(
-              'Borrado!',
-              'Se elimino con exito la asistencia.',
-              'success'
-            )
-            router.reload()
+            if(res.status == '200'){
+              Swal.fire(
+                'Borrado!',
+                'Se elimino con exito la asistencia.',
+                'success'
+              )
+              router.reload()
+            }else{
+              Swal.fire(
+                'Error!',
+                'Ocurrio un problema al eliminar la asistencia',
+                'warning'
+              )
+            }
+
           })
-          
         }
       })
       
@@ -101,8 +108,15 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             duration: 2000,
             isClosable: true
           })
+          router.reload()
+        }else if(res.status == '400'){
+          toast({
+            title: 'Ocurrio un error',
+            status: 'warning',
+            duration: 2000,
+            isClosable: true
+          })
         }
-        router.reload()
       })
       
     }

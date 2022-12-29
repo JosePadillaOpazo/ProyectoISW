@@ -11,13 +11,11 @@ const addAsistente = (asistente) => {
 }
 
 const findAsistente = async (id) => {
-    //console.log(id.asistente)
     const response = axios.get(`${process.env.SERVIDOR}/asistente/find/${id.asistente}`);
     return response
 }
 
 const delAsistente = async (asistente) => {
-    //console.log(`${process.env.SERVIDOR}/asistente/delete/${asistente._id}`)
     const response = axios.delete(`${process.env.SERVIDOR}/asistente/delete/${asistente}`);
     return response
 }

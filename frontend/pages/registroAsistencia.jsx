@@ -39,7 +39,6 @@ const registroAsistencia = () => {
 
   const submitAsistencia = (e) => {
     e.preventDefault()
-    console.log(asistencia)
     addAsistencia(asistencia).then(res => {
       if(res.status == '200'){
           toast({

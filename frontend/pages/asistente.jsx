@@ -52,7 +52,7 @@ const asistente = () => {
           <Td>{asistente.telefono}</Td>
           <Td>{asistente.correo}</Td>
           <Td>
-            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./update/${asistente._id}`)}>
+            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistente/update/${asistente._id}`)}>
               Editar
             </Button>
             <Button colorScheme={"red"} onClick={() => deleteAsistente(asistente)} >
