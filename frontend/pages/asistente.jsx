@@ -77,7 +77,7 @@ const asistente = () => {
     <>
     <Container maxW="container.xl" >
       <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistentes</Heading>
-      <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.push('./registroAsistente')}>Agregar asistente</Button>
+      <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.replace('./registroAsistente')}>Agregar asistente</Button>
       <Stack spacing={7}> 
         <Table variant="simple">
           <Thead>
