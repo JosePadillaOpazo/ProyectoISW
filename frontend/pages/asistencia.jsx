@@ -35,8 +35,6 @@ const asistencia = () => {
           })
         }
       })
-      
-      
     }
 
     const contentTable = () => {
@@ -44,7 +42,7 @@ const asistencia = () => {
         <Tr key={asistencia._id}>
           <Td>{asistencia.titulo}</Td>
           <Td>{asistencia.comentario}</Td>
-          <Td>{asistencia.fecha}</Td>
+          <Td>{asistencia.fecha.substring(0,10)}</Td>
           <Td>{asistencia.asistente_d.nombre}</Td>
           <Td>
             <Button colorScheme={"telegram"} mr="2" onClick={() => router.push(`./view/${asistencia._id}`)}>

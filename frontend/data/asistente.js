@@ -22,10 +22,16 @@ const delAsistente = async (asistente) => {
     return response
 }
 
+const updateAsistente = async (id, asistente) => {
+    const response = axios.put(`${process.env.SERVIDOR}/asistente/edit/${id}`, asistente);
+    return response
+}
+
 
 module.exports = {
     getAsistentes,
     addAsistente,
     findAsistente,
-    delAsistente
+    delAsistente,
+    updateAsistente
 }

@@ -29,16 +29,21 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
     })
     const contentAsistencia = () => {
       return asistenciaParvulo.asistenciaParvulo.map((ae => {
-        if(ae.asistencia._id == asistencia._id){
-          return (
-            <Tr key={ae._id}>
-            <Td>{ae.parvulo.nombre}</Td>
-            <Td>{ae.fecha}</Td>
-            <Td>
-              <Button colorScheme="red" onClick={() => deleteAsistencia(ae)}>Eliminar</Button>
-            </Td>
-          </Tr>
-          )
+        if(ae.asistencia != null){
+          if(ae.asistencia._id == asistencia._id){
+            return (
+              <Tr key={ae._id}>
+              <Td>{ae.parvulo.nombre}</Td>
+              <Td>{ae.fecha.substring(11,16)}</Td>
+              <Td>
+                <Button colorScheme="red" onClick={() => deleteAsistencia(ae)}>Eliminar</Button>
+              </Td>
+            </Tr>
+            )
+          }
+        }else {
+          console.log(ae._id)
+          delParvuloAsistencia(ae._id)
         }
       }
       ))
@@ -156,7 +161,7 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             <Button colorScheme='blue' mr={3} onClick={submitAsistencia}>
               Confirmar
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>Cancelar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

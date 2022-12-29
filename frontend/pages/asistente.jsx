@@ -47,7 +47,7 @@ const asistente = () => {
         <Tr key={asistente._id}>
           <Td>{asistente.rut}</Td>
           <Td>{asistente.nombre}</Td>
-          <Td>{asistente.fecha_de_nac}</Td>
+          <Td>{asistente.fecha_de_nac.substring(0,10)}</Td>
           <Td>{asistente.direccion}</Td>
           <Td>{asistente.telefono}</Td>
           <Td>{asistente.correo}</Td>
