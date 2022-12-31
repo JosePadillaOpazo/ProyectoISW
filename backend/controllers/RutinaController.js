@@ -1,9 +1,10 @@
 const Rutina = require ('../models/Rutina');
 
 const CrearRutina = (req, res) =>{
-    const {grado,educadora,actividad,evaluacion} = req.body;
+    const {fecha,grado,educadora,actividad,evaluacion} = req.body;
     const newRutina = new Rutina (
         {
+            fecha,
             grado,
             educadora,
             actividad,
@@ -20,7 +21,6 @@ const CrearRutina = (req, res) =>{
     )
 }
 
-
 const BuscarRutina = (req, res) =>{
     Rutina.find().populate({path :'grado educadora'}).exec((err, Rutina) => {
             if(err){
@@ -33,7 +33,7 @@ const BuscarRutina = (req, res) =>{
 
 const BuscarRutinaEspecifica = (req, res) =>{
     const { id } = req.params;
-    Rutina.findById(id, (err, Rutina) =>{
+    Rutina.findById(id).populate({path :'grado educadora'}).exec((err, Rutina) =>{
         if(err){
             return res.status(400).send({message:"Error al obtener rutina"})
         }
@@ -47,7 +47,7 @@ const BuscarRutinaEspecifica = (req, res) =>{
 
 const UpdateRutina = (req, res) =>{
     const { id } = req.params;
-    Rutina.findByIdAndUpdate(id, req.body, (err, Rutina) =>{
+    Rutina.findByIdAndUpdate(id, req.body).populate({path :'grado educadora'}).exec((err, Rutina) =>{
         if(err){
             return res.status(400).send({message:"Error al obtener rutina"})
         }

@@ -10,7 +10,6 @@ const BuscarEducadora = async (id) => {
     return response
 }
 const CrearEducadora = (educadora) => {
-    console.log(educadora)
     const response = axios.post(`${process.env.SERVIDOR}/Educadora`, educadora);
     return response
 }
@@ -20,9 +19,15 @@ const UpdateEducadora = (id, educadora) => {
     return response
 }
 
+const DeleteEducadora = async (id) => {
+    const response = await axios.delete(`${process.env.SERVIDOR}/Educadora/delete/${id}`);
+    return response
+}
+
 module.exports ={
     BuscarEducadoras,
     BuscarEducadora,
+    CrearEducadora,
     UpdateEducadora,
-    CrearEducadora
+    DeleteEducadora
 }

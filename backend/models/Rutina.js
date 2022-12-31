@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 const RutinaSchema = new Schema(
     {
         fecha:{
-            type: Date,
-            default: Date.now()
+            type: Date
         },
         grado:{
             type: Schema.ObjectId,
