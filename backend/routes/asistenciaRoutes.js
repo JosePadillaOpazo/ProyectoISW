@@ -7,9 +7,5 @@ api.get('/get', asistenciaController.getAsistenciaSimple);
 api.get('/asistencias', asistenciaController.getAsistencias);
 api.delete('/asistencia/delete/:id', asistenciaController.delAsistencia);
 api.put('/asistencia/edit/:id', asistenciaController.editAsistencia);
-<<<<<<< HEAD
 api.get('/asistencia/find/:id', asistenciaController.getAsistencia);
-=======
-
->>>>>>> NorbertoBalloqui
 module.exports = api
