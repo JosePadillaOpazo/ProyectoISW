@@ -30,11 +30,13 @@ const Crear_Rutina = () => {
     actividad: '',
     evaluacion: ''
   })
+
   const sacargrados = ()=>{
     return grado.map((grados=>(
       <option value={grados._id} key={grados._id}>{grados.grado}</option>
     )))
   }
+  
   const sacareducadoras = ()=>{
     return educadora.map((educadoras=>(
       <option value={educadoras._id} key={educadoras._id}>{educadoras.nombre}</option>
@@ -77,28 +79,29 @@ const Crear_Rutina = () => {
     <>
     <Container maxW="container.lg" my='40'>
       <Stack spacing={5} my={'15'}>
-        <Heading as='h1' size={'2xl'} align='center' textColor={'grey'}>Crear Rutina</Heading>
+        <Heading as='h1' size={'2xl'} align='center' textColor={'black'}>Crear Rutina</Heading>
         <Container maxW='container.lg' marginTop={'40'}>
+        <form onSubmit={submitRutina} id="form">
           <Stack spacing={7}>
             <FormControl id="fecha">
               <FormLabel>Fecha actual</FormLabel>
-              <Input variant='filled' name='fecha' defaultValue={hoy}onChange={handlechange}/>
+              <Input variant='filled' name='fecha' defaultValue={hoy} onChange={handlechange} disabled/>
             </FormControl>
-            <FormControl id="grado">
+            <FormControl id="grado" isRequired>
               <FormLabel>Grado</FormLabel>
               <Select variant='filled' name='grado' placeholder='Seleccione Grado' onChange={handlechange}>
                 {sacargrados()}
               </Select>
             </FormControl >
-            <FormControl id="educadora">
+            <FormControl id="educadora" isRequired>
               <FormLabel>Educadora</FormLabel>
               <Select variant='filled'name='educadora' onChange={handlechange} placeholder='Seleccione Educadora'>
                 {sacareducadoras()}
               </Select>
             </FormControl>
-            <FormControl id="actividad">
+            <FormControl id="actividad" isRequired>
               <FormLabel>Actividad</FormLabel>
-              <Textarea variant='filled' placeholder='Ingrese Actividad' name={"actividad"} onChange={handlechange}/>
+              <Textarea variant='filled' type="text" placeholder='Ingrese Actividad' name={"actividad"} minLength={8} maxLength={200} onChange={handlechange}/>
             </FormControl>
             <FormControl id="evaluacion">
               <FormLabel>Evaluación</FormLabel>
@@ -106,13 +109,15 @@ const Crear_Rutina = () => {
             </FormControl>
           </Stack>
           <HStack maxW={'full'} alignItems='center'>
-            <Button colorScheme='whatsapp' marginTop='10' marginBottom='10' minW={'100'} marginRight='15' onClick={submitRutina}>Crear</Button>
+            <Button colorScheme='whatsapp' marginTop='10' marginBottom='10' minW={'100'} marginRight='15' type={"submit"}>Crear</Button>
             <Button colorScheme='red' marginTop='10' marginBottom='10' minW={'100'} onClick={()=>router.push('../VistaRutinas')}>Cancelar</Button>
           </HStack>
+        </form>
         </Container>
       </Stack>
     </Container>
     </>
   )
 }
+
 export default Crear_Rutina

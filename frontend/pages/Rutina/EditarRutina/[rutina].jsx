@@ -16,14 +16,22 @@ export const getServerSideProps = async (context) => {
 const Editar_Rutina = ({data}) => {
     const [rutina, setRutina] = useState(data)
     const router = useRouter()
+
+    const Consulta = (ruti)=>{
+      if(ruti.educadora!=null){
+          return(ruti.educadora.nombre)
+      }else{
+          return("Sin Educadora")
+      }
+  }
+
       const handlechange = (e) =>{
         setRutina({
           ...rutina,
           [e.target.name]: e.target.value
         })
-        console.log("consol log de handlechange", rutina)
       }
-      
+
       const submitRutina = async (e) =>{
         e.preventDefault()
         const response = await UpdateRutina(rutina._id, rutina)
@@ -54,6 +62,7 @@ const Editar_Rutina = ({data}) => {
       <Stack spacing={5} my={'15'}>
         <Heading as='h1' size={'2xl'} align='center' textColor={'black'}>Editar Rutina</Heading>
         <Container maxW='container.lg' marginTop={'40'}>
+        <form onSubmit={submitRutina} id="form">
           <Stack spacing={7}>
             <FormControl id="fecha">
               <FormLabel>Fecha actual</FormLabel>
@@ -65,21 +74,22 @@ const Editar_Rutina = ({data}) => {
             </FormControl >
             <FormControl id="educadora">
               <FormLabel>Educadora</FormLabel>
-              <Input variant='filled'name='educadora'value={rutina.educadora.nombre} disabled={true}/>
+              <Input variant='filled'name='educadora' value={Consulta(rutina)} disabled={true}/>
             </FormControl>
-            <FormControl id="actividad">
+            <FormControl id="actividad" isRequired>
               <FormLabel>Actividad</FormLabel>
-              <Textarea variant='filled' placeholder='Ingrese Actividad' name={"actividad"} onChange={handlechange} value={rutina.actividad} />
+              <Textarea variant='filled' type="text" placeholder='Ingrese Actividad' name={"actividad"} minLength={8} maxLength={200} onChange={handlechange} value={rutina.actividad}/>
             </FormControl>
             <FormControl id="evaluacion">
               <FormLabel>Evaluación</FormLabel>
-              <Input variant='filled' placeholder='Evaluación' name={"evaluacion"} onChange={handlechange} value={rutina.evaluacion}/>
+              <Input variant='filled' placeholder='Evaluación' name={"evaluacion"} minLength={5} onChange={handlechange} value={rutina.evaluacion}/>
             </FormControl>
           </Stack>
           <HStack>
-              <Button colorScheme='whatsapp' marginTop='10' marginBottom='10' minW={'100'} marginRight='15' onClick={submitRutina}>Guardar</Button>
+              <Button colorScheme='whatsapp' marginTop='10' marginBottom='10' minW={'100'} marginRight='15' type={"submit"}>Guardar</Button>
               <Button colorScheme='red' marginTop='10' marginBottom='10' minW={'100'} onClick={()=>router.push('../VistaRutinas')}>Cancelar</Button>
-            </HStack>
+          </HStack>
+        </form>
         </Container>
       </Stack>
     </Container>

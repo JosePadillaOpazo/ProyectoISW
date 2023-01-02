@@ -1,8 +1,9 @@
 import {useState} from 'react'
 import {BuscarRutina, DeleteRutina} from '../../../data/Rutina'
-import { Container, Heading, Stack, Card, CardBody, Box, Text, StackDivider, HStack, Button} from '@chakra-ui/react'
+import { Container, Heading, Stack, Card, CardBody, Box, Text, StackDivider, HStack, Button, Skeleton} from '@chakra-ui/react'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/router'
+
 
 export const getServerSideProps = async (context) => {
     const response = await BuscarRutina(context.query.rutina)
@@ -13,29 +14,35 @@ export const getServerSideProps = async (context) => {
     }
 }
 
-    const VerRutina = ({data}) => {
-        const [rutina] = useState(data)
-        const router = useRouter()
-        
-        const Eliminar= ( id) =>{
-            DeleteRutina(id)
-            Swal.fire(
-                {
-                    icon: 'success',
-                    title: 'Rutina eliminada',
-                    showConfirmButton: true,
-                    text: 'La Rutina se elimino correctamente'
-                }).then(()=>{
-                    router.push('../VistaRutinas')
-                    
-                })
-            }
+const VerRutina = ({data}) => {
+    const [rutina] = useState(data)
+    const router = useRouter()
+    const Eliminar= ( id) =>{
+        DeleteRutina(id)
+        Swal.fire(
+            {
+                icon: 'success',
+                title: 'Rutina eliminada',
+                showConfirmButton: true,
+                text: 'La Rutina se elimino correctamente'
+            }).then(()=>{
+                router.push('../VistaRutinas')
+            })
+    }
+
+    const Consulta = (ruti)=>{
+        if(ruti.educadora!=null){
+            return(ruti.educadora.nombre)
+        }else{
+            return("Sin Educadora")
+        }
+    }
 
     return (
         <Container maxW="container.lg" my='40'>
         <Stack spacing={'5'} my={'15'}>
           <Heading as='h1' size={'2xl'} align='center' textColor={'black'}>Rutina</Heading>
-          <Card bgColor={'gray.200'}>
+          <Card bgColor={'green.100'}>
             <CardBody>
                 <Stack divider={<StackDivider />} spacing='4'>
                 <Box>
@@ -59,7 +66,7 @@ export const getServerSideProps = async (context) => {
                     Educadora
                     </Heading>
                     <Text pt='2' fontSize='md'>
-                    {rutina.educadora.nombre}
+                    {Consulta(rutina)}
                     </Text>
                 </Box>
                 <Box>
@@ -82,7 +89,7 @@ export const getServerSideProps = async (context) => {
         </Card>
         <HStack>
             <Button w={'full'} colorScheme="blue" textColor={"white"} onClick={()=>router.push(`../VistaRutinas`)}>Volver</Button>
-            <Button w={'full'} colorScheme="yellow" textColor={"white"} onClick={()=>router.push(`../EditarRutina${rutina._id}`)}>Editar</Button>
+            <Button w={'full'} colorScheme="yellow" textColor={"white"} onClick={()=>router.push(`../EditarRutina/${rutina._id}`)}>Editar</Button>
             <Button w={'full'} colorScheme="red" textColor={"white"} onClick={()=>Eliminar(rutina._id)}>Eliminar</Button>
         </HStack>
         </Stack>

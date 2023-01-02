@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { Container, Table, Td, Tr, Heading, Stack, Thead, Tbody, Button} from '@chakra-ui/react';
+import { Table, Td, Tr, Heading, Stack, Thead, Tbody, Button,Container} from '@chakra-ui/react';
 import {BuscarEducadoras, DeleteEducadora} from '../../data/Educadora'
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';

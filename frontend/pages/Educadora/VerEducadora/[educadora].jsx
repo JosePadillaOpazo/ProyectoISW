@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {BuscarEducadora, DeleteEducadora} from '../../../data/Educadora'
-import { Container, Heading, Stack, Card, CardHeader, CardBody, Box, Text, StackDivider, HStack, Button} from '@chakra-ui/react'
+import { Heading, Stack, Card, CardHeader, StackDivider, CardBody, Box, Button,  Container, HStack, Text} from '@chakra-ui/react'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/router'
 
@@ -32,7 +32,9 @@ export const getServerSideProps = async (context) => {
             }
 
     return (
-        <Container maxW="container.lg" my='40'>
+
+       <>
+        <Container maxW="container.lg" my="40" >
         <Stack spacing={'5'} my={'15'}>
           <Heading as='h1' size={'2xl'} align='center' textColor={'black'}>Educadora</Heading>
           <Card  bgColor={'cyan.100'}>
@@ -91,6 +93,7 @@ export const getServerSideProps = async (context) => {
         </HStack>
         </Stack>
       </Container>
+    </>
     )
 }
 

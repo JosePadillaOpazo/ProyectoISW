@@ -55,8 +55,8 @@ const VistaRutinas = () => {
         <Heading as={'h1'} size='2xl' textColor={'black'} textAlign={'center'} mt='15'>Listado de Rutinas</Heading>
         <Stack spacing={'7'} mt='15'>
             <Button maxWidth={"200"} colorScheme={"whatsapp"} textColor={"white"} onClick={()=>router.push("./CrearRutina/CrearRutina")}>Crear Rutina</Button>
-            <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge' >
-                <Thead bgColor='green.200' borderBottom={'4px'} borderStyle='ridge'>
+            <Table variant='striped' colorScheme={"green"} border={'8px'} borderStyle='ridge' >
+                <Thead bgColor='cyan.200' borderBottom={'4px'} borderStyle='ridge'>
                     <Tr fontSize={'25'}>
                         <Td>Fecha</Td>
                         <Td>Activida</Td>
