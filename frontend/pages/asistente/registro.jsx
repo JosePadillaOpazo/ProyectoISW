@@ -43,8 +43,9 @@ const registroAsistente = () => {
     <>
     <Container maxW="container.sm" >
         <Heading as="h1" size="2xl" textAlign="center" my={20}>Registro de Asistente</Heading>
+        <form onSubmit={submitAsistente} id="form">
         <Stack spacing={3}  my={20} justify="center">
-            <InputForm name="rut" placeholder="RUT sin punto y con guion" handleChange={handleChange} label="RUT" type="text"/> 
+            <InputForm name="rut" placeholder="RUT sin punto y con guion" handleChange={handleChange} label="RUT" type="text" maxLength={10} minLength={9} /> 
             <InputForm name="nombre" placeholder="Nombre Completo" handleChange={handleChange} label="Nombre" type="text" /> 
             <InputForm name="fecha_de_nac" handleChange={handleChange} label="Fecha de Nacimiento" type="date" />
             <InputForm name="direccion" handleChange={handleChange} label="Direccion" type="address" placeholder="Direccion" /> 
@@ -52,16 +53,16 @@ const registroAsistente = () => {
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup>
                     <InputLeftAddon children="+56"/>
-                    <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} />
+                    <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} maxLength={9} minLength={8}/>
                 </InputGroup>
             </FormControl>
             <InputForm name="correo" placeholder="Correo Electronico" type="email" handleChange={handleChange} label="Correo Electronico"  />
       </Stack>
       <HStack>
-        <Button colorScheme={"green"} onClick={submitAsistente}>Guardar</Button>
+        <Button colorScheme={"green"} type={"submit"} >Guardar</Button>
         <Button colorScheme={"red"} onClick={() => router.push('../asistente')}>Regresar</Button>
       </HStack>
-      
+        </form>
     </Container>
 
     </>

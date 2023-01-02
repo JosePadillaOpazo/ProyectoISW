@@ -67,10 +67,6 @@ const asistente = () => {
     ))
   }
 
-  const hola = () => {
-    console.log("Hola")
-  }
-
   useEffect(() => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)

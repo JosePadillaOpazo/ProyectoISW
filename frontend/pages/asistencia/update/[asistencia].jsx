@@ -61,18 +61,28 @@ const update = ({data}) => {
     },[])
 
 
+    const stateAsistente = (asistencias) => {
+      if(asistencias.asistente_d!=null){
+        return asistencias.asistente_d.nombre
+      }else {
+        return ("La asistente no se encuentra en el sistema")
+      }
+    }
+
   return (
     <Container>
       <Heading as="h1" size="2xl" textAlign="center" my={20} >Actualizacion de la Asistencia </Heading>
-      <Stack spacing={3}  my={20} justify="center"> 
-          <InputForm name="titulo" type="text" placeholder="Nombre de la Clase" handleChange={handleChange} label="Titulo" value={asistencias.titulo} />
-          <SelectForm label="Asistente" name="asistente_d" handleChange={handleChange} content={contentSelect()} placeholder={asistencias.asistente_d.nombre}/>
-          <TextareaForm name="comentario" placeholder="Comentario" handleChange={handleChange} label="Comentario" defaultValue={asistencias.comentario}/>
-      </Stack>
-      <HStack>
-        <Button colorScheme="whatsapp" onClick={submitAsistencia} >Confirmar</Button>
-        <Button colorScheme={"red"} onClick={() => router.back()}>Regresar</Button>
-      </HStack>
+      <form id='form' onSubmit={submitAsistencia}>
+        <Stack spacing={3}  my={20} justify="center"> 
+            <InputForm name="titulo" type="text" placeholder="Nombre de la Clase" handleChange={handleChange} label="Titulo" value={asistencias.titulo} />
+            <SelectForm label="Asistente" name="asistente_d" handleChange={handleChange} content={contentSelect()} placeholder={stateAsistente(asistencias)}/>
+            <TextareaForm name="comentario" placeholder="Comentario" handleChange={handleChange} label="Comentario" value={asistencias.comentario}/>
+        </Stack>
+        <HStack>
+          <Button colorScheme="whatsapp" type={"submit"} >Confirmar</Button>
+          <Button colorScheme={"red"} onClick={() => router.back()}>Regresar</Button>
+        </HStack>
+      </form>
     </Container>
   )
 }

@@ -46,8 +46,9 @@ const editar = ({data}) => {
     <>
     <Container maxW="container.sm" >
         <Heading as="h1" size="2xl" textAlign="center" my={20}>Actualizacion de Asistente: {data.nombre}</Heading>
+        <form id='form' onSubmit={submitAsistente}>
         <Stack spacing={3}  my={20} justify="center">
-            <InputForm name="rut" placeholder="RUT sin punto y con guion" handleChange={handleChange} label="RUT" type="text" value={asistentec.rut} /> 
+            <InputForm name="rut" placeholder="RUT sin punto y con guion" handleChange={handleChange} label="RUT" type="text" value={asistentec.rut} maxLength={10} minLength={9}/> 
             <InputForm name="nombre" placeholder="Nombre Completo" handleChange={handleChange} label="Nombre" type="text" value={asistentec.nombre} /> 
             <InputForm name="fecha_de_nac" handleChange={handleChange} label="Fecha de Nacimiento" type="date" value={asistentec.fecha_de_nac.substring(0,10)}/>
             <InputForm name="direccion" handleChange={handleChange} label="Direccion" type="address" placeholder="Direccion" value={asistentec.direccion} /> 
@@ -55,15 +56,16 @@ const editar = ({data}) => {
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup>
                     <InputLeftAddon children="+56"/>
-                    <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} value={asistentec.telefono}/>
+                    <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} value={asistentec.telefono} maxLength={9} minLength={8}/>
                 </InputGroup>
             </FormControl>
             <InputForm name="correo" placeholder="Correo Electronico" type="email" handleChange={handleChange} label="Correo Electronico"  value={asistentec.correo}/>
       </Stack>
       <HStack>
-        <Button colorScheme={"whatsapp"} onClick={submitAsistente}>Confirmar</Button>
+        <Button colorScheme={"whatsapp"} type={"submit"} >Confirmar</Button>
         <Button colorScheme={"red"} onClick={() => router.back()}>Cancelar</Button>
       </HStack>
+        </form>
       
     </Container>
 

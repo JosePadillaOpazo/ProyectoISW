@@ -37,13 +37,21 @@ const asistencia = () => {
       })
     }
 
+    const statusAsistente = (asistencia) => {
+      if(asistencia.asistente_d != null){
+        return (asistencia.asistente_d.nombre)
+      }else {
+        return ("La asistente no se encuentra en el sistema")
+      }
+    }
+
     const contentTable = () => {
       return asistencias.map((asistencia => (
         <Tr key={asistencia._id}>
           <Td>{asistencia.titulo}</Td>
           <Td>{asistencia.comentario}</Td>
           <Td>{asistencia.fecha.substring(0,10)}</Td>
-          <Td>{asistencia.asistente_d.nombre}</Td>
+          <Td>{statusAsistente(asistencia)}</Td>
           <Td>
             <HStack>
               <Button colorScheme={"telegram"} onClick={() => router.push(`./asistencia/view/${asistencia._id}`)}>

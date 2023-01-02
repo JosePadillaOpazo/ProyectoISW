@@ -29,23 +29,6 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
       idParvulo:''
     })
 
-    const selectedParvulo = () => {
-      if(pselected != null){
-        parvulo.forEach(pa => {
-          //console.log("ID seleccionada: ", pselected, "\nDatos: ", pa)
-          if(pa._id == pselected){
-            return(
-              <Text>
-                Datos: {pa.nombre}
-              </Text>
-            )
-          }
-        })
-      }else {
-        return("Datos no existente!")
-      }
-    }
-
     const contentAsistencia = () => {
       return asistenciaParvulo.asistenciaParvulo.map((ae => {
         if(ae.asistencia != null){
@@ -179,11 +162,7 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             <HStack>
             <SelectForm name="idParvulo" label="Parvulo" placeholder="Seleccione un parvulo..." handleChange={handleChange} content={contentSelect()}/>
             </HStack>
-            <HStack>
-              <Text mt="5"  >
-                Datos: {selectedParvulo()}
-              </Text>
-            </HStack>
+
 
             
           </ModalBody>

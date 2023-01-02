@@ -19,7 +19,6 @@ const index = () => {
 
   const login = (e) => {
     e.preventDefault()
-    console.log("Educadora: ", rut)
   }
 
   const login2 = (e) => {
@@ -41,7 +40,6 @@ const index = () => {
   }
   const login3 = (e) => {
     e.preventDefault()
-    console.log("Apoderado: ", rut3)
   }
 
 
