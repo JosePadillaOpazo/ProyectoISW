@@ -16,7 +16,7 @@ const addAsistenciaParvulo = (req, res) => {
 
 const delAsistenciaParvulo = (req, res) => {
     let id = req.params.id
-    AsistenciaParvulo.findOneAndDelete(id, (err, asistenciaParvulo) => {
+    AsistenciaParvulo.findByIdAndDelete(id, (err, asistenciaParvulo) => {
         if(err){
             return res.status(400).send({message: "Error al eliminar el registro"})
         }
@@ -27,7 +27,7 @@ const delAsistenciaParvulo = (req, res) => {
 const getAsistenciaParvulo = (req, res) => {
     AsistenciaParvulo.find()
     .populate('asistencia')
-    .populate('Parvulo')
+    .populate('parvulo')
     .exec((_err, asistenciaParvulo) => {
         res.status(200).send({asistenciaParvulo})
     })

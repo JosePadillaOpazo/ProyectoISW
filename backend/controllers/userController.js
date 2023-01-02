@@ -2,8 +2,7 @@ const User = require('../models/user')
 
 const addUser = (req, res) => {
     let newUser = new User
-    newUser.rute = req.body.rut
-    newUser.rol = req.body.rol
+    newUser.rut = req.body.rut
 
     newUser.save((err, user) => {
         if(err){
@@ -13,7 +12,7 @@ const addUser = (req, res) => {
     })
 }
 
-const getUser = (req, res) => {
+const getUser = (_req, res) => {
     User.find({}, (err, user) => {
         if(err){
             return res.status(400).send({message: "Error al mostrar los registros"})
@@ -22,7 +21,7 @@ const getUser = (req, res) => {
     })
 }
 
-const delUser = (req, res) => {
+const delUser = (_req, res) => {
     User.find({}, (err, user) => {
         if(err){
             return res.status(400).send({message: "Error al elimiar el registro"})
@@ -33,7 +32,7 @@ const delUser = (req, res) => {
 
 const getUserPow = (_req, res) => {
     User.find()
-    .populate('rute')
+    .populate('rut')
     .exec((err, user) => {
         res.status(200).send({user})
     })

@@ -18,7 +18,7 @@ const rutaMatriculas = require('./routes/MatriculaRoutes')
 const userRoutes = require('./routes/userRoutes')
 const asistenciaParvuloRoutes = require('./routes/asistenciaParvuloRoutes')
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.options('*', cors());
 app.use('/api', EducadoraRoutes);
