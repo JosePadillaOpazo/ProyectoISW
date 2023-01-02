@@ -71,16 +71,6 @@ const asistente = () => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })
-
-    const response2 = localStorage.getItem('token')
-    if(response2 != "20200200-4"){
-      toast({
-        title: "No tienes acceso!",
-        duration: 2000,
-        isClosable: true
-      })
-      router.push("/")
-    }
     
   }, [asistentes])
 
