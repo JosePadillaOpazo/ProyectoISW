@@ -43,12 +43,25 @@ const ModificarEnfermedad = (req, res) =>{
    )
 }
 
-
+const EliminarEnfermedad = (req, res) =>{
+    const { id } = req.params;
+    Enfermedad.findByIdAndDelete(id, (err, Enfermedad) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener Enfermedad"})
+        }
+        if(!Enfermedad){
+            return res.status(404).send({message:"Error al encontrar Enfermedad"})
+        }
+        return res.status(200).send(Enfermedad)
+    }
+   )
+}
 
 module.exports = {
     CrearEnfermedad,
     VerEnfermedad,
-    ModificarEnfermedad
+    ModificarEnfermedad,
+    EliminarEnfermedad
 }
 
 

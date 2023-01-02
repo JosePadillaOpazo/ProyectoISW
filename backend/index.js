@@ -9,15 +9,15 @@ const rutadiscapacidad = require('./routes/DiscapacidadRoutes')
 const rutaenfermedad = require('./routes/EnfermedadRoutes')
 const rutapoderado = require('./routes/ApoderadoRoutes')
 
-
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.options('*', cors());
-
 app.use('/api', rutaantecedente);
 app.use ('/api', rutapoderado);
 app.use ('/api', rutaenfermedad);
 app.use ('/api', rutadiscapacidad);
+
+
 
 app.listen(process.env.PORT, () => console.log('Server Stared'));
 
@@ -33,5 +33,4 @@ mongoose.connect(process.env.DB,(err) =>
         }
         return console.log('Conectado a la base de datos')
     }
-
 );

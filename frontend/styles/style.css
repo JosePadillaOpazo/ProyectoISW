@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+.home-page-title{
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.home-page-img{
+    margin-inline: 30%;
+}
+
+Thead{
+    background-color:  #1dd3ae ;
+    border-bottom: 2px solid black;
+}
+
+Tbody{
+    background-color: #f9e79f;
+}
+
+Table{
+    border: .5px solid black;
+    margin-inline: 0%;
+}
+
+body{
+    margin: 0;
+}
+
+.BackgroundImage{
+    z-index: -1 !important;
+}
+
+.backgroundImg{
+    background-image: url("https://comiqueros.cl/wp-content/uploads/2021/02/Castillo-ambulante.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    opacity: 0.5 !important;
+    width: 100% !important;
+}
+
+/* Barra de Navegacion */
+.nav{
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 0 1rem;
+    background: linear-gradient(
+        to right,
+        #3d816a ,
+        #45ccc1,
+        #2ecc71,
+        #27ae60,
+        #16a085,
+        #1abc9c,
+        #107a65  
+    );
+}
+
+.site-title{
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav a{
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    cursor: pointer;
+}
+
+.nav li.active {
+    background-color: rgba(51, 165, 159, 0.938);
+}
+
+.nav li:hover {
+    background-color: rgba(0, 0, 0, 0.541);
+    margin-block: 3px;
+    border-radius: 10px;
+}
+
+/*Aqui termina barra de navegacion*/
+
+
+@media screen and (min-width: 375px) and (max-width: 1024px) {
+    ::-webkit-scrollbar-thumb{
+
+    }
+    
+  }

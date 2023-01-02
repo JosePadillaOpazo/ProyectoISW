@@ -11,7 +11,7 @@ const ApoderadoSchema = new Schema(
         nombre:{
             type: String,
             required: true,
-            match: /^([a-zA-Z]+( [a-zA-Z]+)+)$/
+            match: /^(([A-Za-z ]+)+)$/
         },
         fecha_de_nac:{
             type: Date,
@@ -20,11 +20,12 @@ const ApoderadoSchema = new Schema(
         direccion:{
             type: String,
             required: true,
-            match: /^([A-Za-z0-9]+( [A-Za-z0-9]+)+)$/
+            match: /^(([A-Za-z0-9 ]+)+)$/
         },
         telefono1:{
             type: Number,
             required: true
+            
                       
         },
         telefono2:{
