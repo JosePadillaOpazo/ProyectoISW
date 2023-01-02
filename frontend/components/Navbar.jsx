@@ -1,21 +1,22 @@
 import React from 'react'
-import { Stack } from '@chakra-ui/react'
+import { Stack, Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import NextLink from 'next/link'
 
 const Navbar = () => {
     const router = useRouter()
   return (
     <Stack>
         <nav className='nav'>
-            <a onClick={() => router.replace('/')} className='site-title'>
+            <Link onClick={() => router.replace('/')} className='site-title'>
             Sala Cuna
-            </a>
+            </Link>
             <ul>
                 <li>
-                    <a onClick={() => router.replace('/asistente')}>Asistente</a>
+                    <Link as={NextLink} href='/asistente'>Asistente</Link>
                 </li>
                 <li>
-                    <a onClick={() => router.replace('/asistencia')}>Asistencia</a>
+                    <Link as={NextLink} href='/asistencia'>Asistencia</Link>
                 </li>
             </ul>
         </nav>

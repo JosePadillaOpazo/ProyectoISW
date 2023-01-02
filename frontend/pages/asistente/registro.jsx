@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast } from '@chakra-ui/react'
 import {useRouter} from 'next/router'
-import {addAsistente} from '../data/asistente'
-import InputForm from '../components/InputForm'
+import {addAsistente} from '../../data/asistente'
+import InputForm from '../../components/InputFormEx'
 
 const registroAsistente = () => {
   const router = useRouter()
@@ -34,7 +34,7 @@ const registroAsistente = () => {
         duration: 2000,
         isClosable: true,
       })
-      router.push('./asistente')
+      router.push('../asistente')
     }
     })
   }
@@ -59,7 +59,7 @@ const registroAsistente = () => {
       </Stack>
       <HStack>
         <Button colorScheme={"green"} onClick={submitAsistente}>Guardar</Button>
-        <Button colorScheme={"yellow"} onClick={() => router.push('./asistente')}>Regresar</Button>
+        <Button colorScheme={"red"} onClick={() => router.push('../asistente')}>Regresar</Button>
       </HStack>
       
     </Container>

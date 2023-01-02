@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
+import { Button, Container, Heading, HStack, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getAsistentes, delAsistente} from '../data/asistente'
 import {useRouter} from 'next/router'
 import Swal from 'sweetalert2'
 
 const asistente = () => {
   const router = useRouter()
+  const toast = useToast()
   const [asistentes, setAsistentes] = useState([{
     _id:'',
     rut:'',
@@ -52,24 +53,38 @@ const asistente = () => {
           <Td>{asistente.telefono}</Td>
           <Td>{asistente.correo}</Td>
           <Td>
-            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistente/update/${asistente._id}`)}>
-              Editar
-            </Button>
-            <Button colorScheme={"red"} onClick={() => deleteAsistente(asistente)} >
-              Eliminar
-            </Button>
+            <HStack>
+              <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./asistente/update/${asistente._id}`)}>
+                Editar
+              </Button>
+              <Button colorScheme={"red"} onClick={() => deleteAsistente(asistente)} >
+                Eliminar
+              </Button>
+            </HStack>
           </Td>
         </Tr>
       )
     ))
   }
 
-
+  const hola = () => {
+    console.log("Hola")
+  }
 
   useEffect(() => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })
+
+    const response2 = localStorage.getItem('token')
+    if(response2 != "20200200-4"){
+      toast({
+        title: "No tienes acceso!",
+        duration: 2000,
+        isClosable: true
+      })
+      router.push("/")
+    }
     
   }, [asistentes])
 
@@ -77,10 +92,10 @@ const asistente = () => {
     <>
     <Container maxW="container.xl" >
       <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistentes</Heading>
-      <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.replace('./registroAsistente')}>Agregar asistente</Button>
+      <Button colorScheme={"whatsapp"} mt="10" mb={10} onClick={() => router.replace('./asistente/registro')}>Agregar asistente</Button>
       <Stack spacing={7}> 
-        <Table variant="simple">
-          <Thead>
+        <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge' >
+          <Thead bgColor='green.200' borderBottom={'4px'} borderStyle='ridge'>
             <Tr>
               <Td>RUT</Td>
               <Td>Nombre</Td>

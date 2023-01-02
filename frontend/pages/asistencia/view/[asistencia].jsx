@@ -2,7 +2,7 @@ import { Container,useToast,  Heading, Stack,Text , Table, Thead, Tr, Td, Tbody,
 import React, { useEffect, useState } from 'react'
 import {findAsistencia, findAsistenciaParvulo, getParvulos, addParvuloAsistencia, delParvuloAsistencia} from '../../../data/asistencia'
 import { useRouter } from 'next/router'
-import SelectForm from '../../../components/SelectForm'
+import SelectForm from '../../../components/SelectFormEx'
 import Swal from 'sweetalert2'
 
 export const getServerSideProps = async (context) => {
@@ -21,12 +21,31 @@ export const getServerSideProps = async (context) => {
 const mostrar = ({asistencia, asistenciaParvulo }) => {
     const router = useRouter()
     const toast = useToast()
+    const [pselected, setPselected] = useState()
     const {isOpen, onOpen, onClose} = useDisclosure()
     const [parvulo, setParvulo] = useState([])
     const [asisClase, setasisClase] = useState({
       idAsistencia:asistencia._id,
       idParvulo:''
     })
+
+    const selectedParvulo = () => {
+      if(pselected != null){
+        parvulo.forEach(pa => {
+          //console.log("ID seleccionada: ", pselected, "\nDatos: ", pa)
+          if(pa._id == pselected){
+            return(
+              <Text>
+                Datos: {pa.nombre}
+              </Text>
+            )
+          }
+        })
+      }else {
+        return("Datos no existente!")
+      }
+    }
+
     const contentAsistencia = () => {
       return asistenciaParvulo.asistenciaParvulo.map((ae => {
         if(ae.asistencia != null){
@@ -51,8 +70,10 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
     const handleChange = (e) => {
       setasisClase({
         ...asisClase,
-        [e.target.name]: e.target.value
-      })
+        [e.target.name]: e.target.value,
+      },
+      setPselected(e.target.value)
+      )
       
     }
 
@@ -83,19 +104,16 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
                 'warning'
               )
             }
-
           })
         }
       })
-      
-      
     }
 
     const contentSelect = () => {
       return parvulo.map((as => (
         <option value={as._id} key={as._id}>{as.nombre}</option>
-      )))
-      
+      ))
+      )
     }
 
     const submitAsistencia = (e) => {
@@ -109,7 +127,7 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             isClosable: true
           })
           router.reload()
-        }else if(res.status == '400'){
+        }else{
           toast({
             title: 'Ocurrio un error',
             status: 'warning',
@@ -118,7 +136,6 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
           })
         }
       })
-      
     }
 
     useEffect(() => {
@@ -134,13 +151,13 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
         Asistente a cargo: {asistencia.asistente_d.nombre}
       </Heading>
       <HStack mb={10}>
-        <Button colorScheme={"green"} onClick={onOpen} >Registrar asistencia</Button>
+        <Button colorScheme={"whatsapp"} onClick={onOpen} >Registrar asistencia</Button>
         <Spacer/>
         <Button colorScheme={"blue"} onClick={() => router.back()}>Volver</Button>
       </HStack>
       <Stack>
-        <Table>
-          <Thead>
+        <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge' >
+          <Thead bgColor='green.200' borderBottom={'4px'} borderStyle='ridge'>
             <Tr>
               <Td>Parvulo</Td>
               <Td className='tmh'>Hora de llegada</Td>
@@ -163,8 +180,8 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
             <SelectForm name="idParvulo" label="Parvulo" placeholder="Seleccione un parvulo..." handleChange={handleChange} content={contentSelect()}/>
             </HStack>
             <HStack>
-              <Text mt="5" >
-                Nombre: {asistencia.parvulo}
+              <Text mt="5"  >
+                Datos: {selectedParvulo()}
               </Text>
             </HStack>
 
@@ -172,7 +189,7 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={submitAsistencia}>
+            <Button colorScheme='whatsapp' mr={3} onClick={submitAsistencia}>
               Confirmar
             </Button>
             <Button onClick={onClose}>Cancelar</Button>

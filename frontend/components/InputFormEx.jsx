@@ -3,7 +3,7 @@ import React from 'react'
 
 const InputForm = ({label, handleChange, name, placeholder, type, value}) => {
   return (
-    <FormControl id={name}>
+    <FormControl id={name} isRequired>
         <FormLabel>{label}</FormLabel>
         <Input type={type} placeholder={placeholder} name={name} onChange={handleChange} value={value}/>
     </FormControl>

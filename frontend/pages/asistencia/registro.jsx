@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Heading, HStack, useToast, Stack } from '@chakra-ui/react'
 import {useRouter} from 'next/router'
-import {getAsistentes} from '../data/asistente'
-import {addAsistencia} from '../data/asistencia'
-import InputForm from '../components/InputForm'
-import TextareaForm from '../components/TextareaForm'
-import SelectForm from '../components/SelectForm'
+import {getAsistentes} from '../../data/asistente'
+import {addAsistencia} from '../../data/asistencia'
+import InputForm from '../../components/InputFormEx'
+import TextareaForm from '../../components/TextareaFormEx'
+import SelectForm from '../../components/SelectFormEx'
 
 const registroAsistencia = () => {
   const router = useRouter()
@@ -48,7 +48,7 @@ const registroAsistencia = () => {
           duration: 2000,
           isClosable: true,
         })
-        router.push('./asistencia')
+        router.push('../asistencia')
       }
     })
   }
@@ -64,8 +64,8 @@ const registroAsistencia = () => {
           <TextareaForm name="comentario" placeholder="Comentario" handleChange={handleChange} label="Comentario"/>
       </Stack>
       <HStack>
-        <Button colorScheme={"green"} onClick={submitAsistencia} >Guardar</Button>
-        <Button colorScheme={"yellow"} onClick={() => router.push('./asistencia')}>Regresar</Button>
+        <Button colorScheme="whatsapp" onClick={submitAsistencia} >Guardar</Button>
+        <Button colorScheme={"red"} onClick={() => router.push('../asistencia')}>Regresar</Button>
       </HStack>
     </Container>
     </>

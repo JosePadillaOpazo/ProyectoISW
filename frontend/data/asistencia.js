@@ -21,6 +21,11 @@ const findAsistencia = async (id) => {
     return response
 }
 
+const updateAsistencia = async (id, asistencia) => {
+    const response = axios.put(`${process.env.SERVIDOR}/asistencia/edit/${id}`, asistencia);
+    return response
+}
+
 const findAsistenciaParvulo = async () => {
     const response = axios.get(`${process.env.SERVIDOR}/asistenciasParvulos`);
     return response
@@ -48,5 +53,6 @@ module.exports = {
     getParvulos,
     findAsistenciaParvulo,
     addParvuloAsistencia,
-    delParvuloAsistencia
+    delParvuloAsistencia,
+    updateAsistencia
 }

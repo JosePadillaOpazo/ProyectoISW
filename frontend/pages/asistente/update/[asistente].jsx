@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {findAsistente, updateAsistente} from '../../../data/asistente'
 import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast } from '@chakra-ui/react'
-import InputForm from '../../../components/InputForm'
+import InputForm from '../../../components/InputFormEx'
 import { useRouter } from 'next/router'
 
 export const getServerSideProps = async (context) => {
@@ -61,8 +61,8 @@ const editar = ({data}) => {
             <InputForm name="correo" placeholder="Correo Electronico" type="email" handleChange={handleChange} label="Correo Electronico"  value={asistentec.correo}/>
       </Stack>
       <HStack>
-        <Button colorScheme={"green"} onClick={submitAsistente}>Confirmar</Button>
-        <Button colorScheme={"yellow"} onClick={() => router.back()}>Cancelar</Button>
+        <Button colorScheme={"whatsapp"} onClick={submitAsistente}>Confirmar</Button>
+        <Button colorScheme={"red"} onClick={() => router.back()}>Cancelar</Button>
       </HStack>
       
     </Container>

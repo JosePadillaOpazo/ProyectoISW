@@ -1,4 +1,4 @@
-import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody} from '@chakra-ui/react'
+import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody, HStack} from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {useRouter} from 'next/router'
 import {getAsistencias, delAsistencia} from '../data/asistencia'
@@ -45,12 +45,17 @@ const asistencia = () => {
           <Td>{asistencia.fecha.substring(0,10)}</Td>
           <Td>{asistencia.asistente_d.nombre}</Td>
           <Td>
-            <Button colorScheme={"telegram"} mr="2" onClick={() => router.push(`./asistencia/view/${asistencia._id}`)}>
-              Asistencia
-            </Button>
-            <Button colorScheme={"red"} onClick={() => deleteAsistencia(asistencia)}>
-              Eliminar
-            </Button>
+            <HStack>
+              <Button colorScheme={"telegram"} onClick={() => router.push(`./asistencia/view/${asistencia._id}`)}>
+                Asistencia
+              </Button>
+              <Button colorScheme={"yellow"} onClick={() => router.push(`./asistencia/update/${asistencia._id}`)}>
+                Editar
+              </Button>
+              <Button colorScheme={"red"} onClick={() => deleteAsistencia(asistencia)}>
+                Eliminar
+              </Button>
+            </HStack>
           </Td>
         </Tr>
       )
@@ -69,10 +74,10 @@ const asistencia = () => {
     <>
     <Container maxW={"container.xl"}>
         <Heading as="h1" size="2xl" textAlign="center" my={20}>Asistencia de la Sala Cuna</Heading>
-        <Button colorScheme={"green"} mb={10} onClick={() => router.push('./registroAsistencia') }>Agregar asistencia</Button>
+        <Button colorScheme="whatsapp" mb={10} onClick={() => router.push('./asistencia/registro') }>Agregar asistencia</Button>
         <Stack spacing={5}>
-          <Table variant="simple">
-            <Thead>
+          <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge' >
+            <Thead bgColor='green.200' borderBottom={'4px'} borderStyle='ridge'>
               <Tr>
                 <Td>Titulo</Td>
                 <Td>Comentario</Td>

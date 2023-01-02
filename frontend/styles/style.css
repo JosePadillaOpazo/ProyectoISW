@@ -13,34 +13,11 @@
 }
 
 Thead{
-    background-color:  #1dd3ae ;
-    border-bottom: 2px solid black;
-}
-
-Tbody{
-    background-color: #f9e79f;
-}
-
-Table{
-    border: .5px solid black;
-    margin-inline: 0%;
+    font-size: 20px;
 }
 
 body{
     margin: 0;
-}
-
-.BackgroundImage{
-    z-index: -1 !important;
-}
-
-.backgroundImg{
-    background-image: url("https://comiqueros.cl/wp-content/uploads/2021/02/Castillo-ambulante.jpg") !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    opacity: 0.5 !important;
-    width: 100% !important;
 }
 
 /* Barra de Navegacion */
