@@ -44,3 +44,9 @@ module.exports = {
     getUserPow,
     delUser
 }
+module.exports = {
+    addUser,
+    getUser,
+    getUserPow,
+    delUser
+}

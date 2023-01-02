@@ -79,3 +79,23 @@ module.exports = {
     UpdateRutina,
     EliminarRutina
 }
+const EliminarRutina = (req, res) =>{
+    const { id } = req.params;
+    Rutina.findByIdAndDelete(id, (err, Rutina) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener rutina"})
+        }
+        if(!Rutina){
+            return res.status(404).send({message:"Error al encontrar rutina"})
+        }
+        return res.status(200).send(Rutina)
+    }
+   )
+}
+module.exports = {
+    CrearRutina,
+    BuscarRutina,
+    BuscarRutinaEspecifica,
+    UpdateRutina,
+    EliminarRutina
+}

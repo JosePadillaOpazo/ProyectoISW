@@ -60,3 +60,10 @@ module.exports = {
     editAsistenciaParvulo,
     findAsistenciaParvulo
 }
+module.exports = {
+    addAsistenciaParvulo,
+    getAsistenciaParvulo,
+    delAsistenciaParvulo,
+    editAsistenciaParvulo,
+    findAsistenciaParvulo
+}

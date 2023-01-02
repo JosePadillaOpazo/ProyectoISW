@@ -49,12 +49,25 @@ const ModificarApoderado = (req, res) =>{
    )
 }
 
-
+const EliminarApoderado = (req, res) =>{
+    const { id } = req.params;
+    Apoderado.findByIdAndDelete(id, (err, Apoderado) =>{
+        if(err){
+            return res.status(400).send({message:"Error al obtener apoderado"})
+        }
+        if(!Apoderado){
+            return res.status(404).send({message:"Error al encontrar apoderado"})
+        }
+        return res.status(200).send(Apoderado)
+    }
+   )
+}
 
 module.exports = {
     CrearApoderado,
     VerApoderado,
-    ModificarApoderado
+    ModificarApoderado,
+    EliminarApoderado
 }
 
 
