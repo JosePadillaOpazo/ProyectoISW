@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {BuscarRutina, DeleteRutina} from '../../../data/Rutina'
 import { Container, Heading, Stack, Card, CardBody, Box, Text, StackDivider, HStack, Button, Skeleton} from '@chakra-ui/react'
 import Swal from 'sweetalert2'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 
 
 export const getServerSideProps = async (context) => {
@@ -15,8 +15,7 @@ export const getServerSideProps = async (context) => {
 }
 
 const VerRutina = ({data}) => {
-    const [rutina] = useState(data)
-    const router = useRouter()
+    const [rutina] = state(data)
     const Eliminar= ( id) =>{
         DeleteRutina(id)
         Swal.fire(

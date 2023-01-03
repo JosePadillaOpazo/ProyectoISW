@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect as effect, useState as state} from 'react'
 import { Table, Td, Tr, Heading, Stack, Thead, Tbody, Button,Container} from '@chakra-ui/react';
 import {BuscarEducadoras, DeleteEducadora} from '../../data/Educadora'
 import { useRouter } from 'next/router';
@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const VistaEducadoras = () => {
    
-    const[educadoras, setEducadora] = useState([{
+    const[educadoras, setEducadora] = state([{
         _id: '',
         rut: '',
         fecha_de_nac: '',
@@ -45,7 +45,7 @@ const VistaEducadoras = () => {
             )
         })
    }
-    useEffect(() => {
+   effect(() => {
         BuscarEducadoras().then(res=>{
             setEducadora(res.data)
         })

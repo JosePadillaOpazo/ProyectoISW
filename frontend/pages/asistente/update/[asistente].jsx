@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {findAsistente, updateAsistente} from '../../../data/asistente'
-import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast } from '@chakra-ui/react'
+import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast as toast} from '@chakra-ui/react'
 import InputForm from '../../../components/InputFormEx'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 
 export const getServerSideProps = async (context) => {
     const response = await findAsistente(context.query)
@@ -14,9 +14,7 @@ export const getServerSideProps = async (context) => {
 }
 
 const editar = ({data}) => {
-  const [asistentec, setAsistentec] = useState(data)
-  const router = useRouter()
-  const toast = useToast()
+  const [asistentec, setAsistentec] = state(data)
   const { asistente } = router.query
 
   const handleChange = (e) => {
@@ -55,7 +53,6 @@ const editar = ({data}) => {
             <FormControl>
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup>
-                    <InputLeftAddon children="+56"/>
                     <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} value={asistentec.telefono} maxLength={9} minLength={8}/>
                 </InputGroup>
             </FormControl>

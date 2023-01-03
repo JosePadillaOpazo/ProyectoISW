@@ -27,3 +27,4 @@ const RutinaSchema = new Schema(
 );
 
 module.exports = mongoose.model('Rutina', RutinaSchema);
+module.exports = mongoose.model('Rutina', RutinaSchema);

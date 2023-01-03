@@ -4,7 +4,8 @@ const EnfermedadSchema = new Schema(
     {
         nombre:{
             type: String,
-            required: true
+            required: true,
+            match: /^(([A-Za-z0-9 ]+)+)$/
         }
     }
 );

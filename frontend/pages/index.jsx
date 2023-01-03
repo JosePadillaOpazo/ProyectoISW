@@ -1,6 +1,5 @@
-import { Container, FormControl, FormLabel, Heading, Input, Stack, Button, HStack, useToast } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import ModalExp from '../components/ModalExp'
+import { Container, Heading} from '@chakra-ui/react'
+import React from 'react'
 
 const index = () => {
 
@@ -13,9 +12,6 @@ const index = () => {
 
     </Container>
     </>
-    
-    
-    
   )
 }
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, HStack, useToast, Stack, Text } from '@chakra-ui/react'
-import {useRouter} from 'next/router'
+import React, { useEffect as effect, useState as state} from 'react'
+import { Button, Container, Heading, HStack, useToast as toast, Stack } from '@chakra-ui/react'
+import router from 'next/router'
 import {getAsistentes} from '../../data/asistente'
 import {addAsistencia} from '../../data/asistencia'
 import InputForm from '../../components/InputFormEx'
@@ -8,10 +8,8 @@ import TextareaForm from '../../components/TextareaFormEx'
 import SelectForm from '../../components/SelectFormEx'
 
 const registroAsistencia = () => {
-  const router = useRouter()
-  const toast = useToast()
-  const [asistentes, setAsistentes] = useState([])
-  const [asistencia, setAsistencia] = useState({
+  const [asistentes, setAsistentes] = state([])
+  const [asistencia, setAsistencia] = state({
     titulo:'',
     idAsistente: '',
     comentario: ''
@@ -31,7 +29,7 @@ const registroAsistencia = () => {
     })
   }
 
-  useEffect(() => {
+  effect(() => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })
@@ -41,13 +39,6 @@ const registroAsistencia = () => {
     e.preventDefault()
     addAsistencia(asistencia).then(res => {
       if(res.status == '200'){
-          toast({
-          title: 'Asistencia registrada',
-          description: "La asistencia se ha registrado correctamente.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        })
         router.push('../asistencia')
       }
     })

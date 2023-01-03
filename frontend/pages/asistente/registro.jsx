@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
-import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast } from '@chakra-ui/react'
-import {useRouter} from 'next/router'
+import React, { useState as state} from 'react'
+import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast as toast } from '@chakra-ui/react'
+import router from 'next/router'
 import {addAsistente} from '../../data/asistente'
 import InputForm from '../../components/InputFormEx'
 
 const registroAsistente = () => {
-  const router = useRouter()
-  const toast = useToast()
-  const [asistente, setAsistente] = useState({
+  const [asistente, setAsistente] = state({
     rut:'',
     nombre: '',
     fecha_de_nac: '',
@@ -27,13 +25,6 @@ const registroAsistente = () => {
     e.preventDefault()
     addAsistente(asistente).then(res => {
       if(res.status == '200'){
-        toast({
-        title: 'Asistente registrado',
-        description: "El asistente se ha registrado correctamente.",
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      })
       router.push('../asistente')
     }
     })
@@ -52,7 +43,6 @@ const registroAsistente = () => {
             <FormControl>
                 <FormLabel>Telefono</FormLabel>
                 <InputGroup>
-                    <InputLeftAddon children="+56"/>
                     <Input type="tel" placeholder='Telefono' name={"telefono"} onChange={handleChange} maxLength={9} minLength={8}/>
                 </InputGroup>
             </FormControl>

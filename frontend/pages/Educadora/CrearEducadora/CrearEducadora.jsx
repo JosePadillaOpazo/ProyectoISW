@@ -1,15 +1,13 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {CrearEducadora} from '../../../data/Educadora'
 import { Heading, Stack, FormControl, FormLabel, Input, Button, Container, HStack, Text} from '@chakra-ui/react'
 import InputForm from '../../../Components/InputForm'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 
 const Crear_Educadora = () => {
-  const router = useRouter()
-  
-  const [educadora, setEducadora] = useState({
+  const [educadora, setEducadora] = state({
     rut: '',
     fecha_de_nac: '',
     nombre: '',

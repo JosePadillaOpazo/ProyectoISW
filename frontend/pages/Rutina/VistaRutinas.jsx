@@ -1,11 +1,11 @@
-import {useEffect, useState} from 'react'
+import {useEffect as effect, useState as state} from 'react'
 import { Container, Table, Td, Tr, Heading, Stack, Thead, Tbody, Button} from '@chakra-ui/react';
 import {BuscarRutinas, DeleteRutina} from "../../data/Rutina"
-import { useRouter } from 'next/router';
+import router from 'next/router';
 import Swal from 'sweetalert2';
 
 const VistaRutinas = () => {
-    const[rutinas, setRutina] = useState([{
+    const[rutinas, setRutina] = state([{
         _id: '',
         fecha: '',
         grado: '',
@@ -13,8 +13,6 @@ const VistaRutinas = () => {
         actividad: '',
         evaluacion: ''
     }])
-
-    const router = useRouter()
 
     const Eliminar= (id) =>{
         DeleteRutina(id)
@@ -43,7 +41,7 @@ const VistaRutinas = () => {
         })
    }
 
-    useEffect(() => {
+   effect(() => {
         BuscarRutinas().then(res => {
             setRutina(res.data)
         })

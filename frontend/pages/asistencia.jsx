@@ -1,12 +1,11 @@
 import { Container, Stack, Button, Heading, Table, Thead, Tr, Td, Tbody, HStack} from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import {useRouter} from 'next/router'
+import React, { useEffect as effect, useState as state } from 'react'
+import router from 'next/router'
 import {getAsistencias, delAsistencia} from '../data/asistencia'
 import Swal from 'sweetalert2'
 
 const asistencia = () => {
-    const router = useRouter()
-    const [asistencias, setAsistencias] = useState([{
+    const [asistencias, setAsistencias] = state([{
       _id:'',
       titulo:'',
       comentario: '',
@@ -71,7 +70,7 @@ const asistencia = () => {
       
     }
 
-    useEffect(() => {
+    effect(() => {
       getAsistencias().then(res => {
         setAsistencias(res.data.asistencia)
       })

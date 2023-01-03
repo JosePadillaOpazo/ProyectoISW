@@ -1,6 +1,6 @@
-import { Container, Heading, useToast, Stack, HStack, Button, Input } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import { Container, Heading, useToast as toast, Stack, HStack, Button, Input } from '@chakra-ui/react'
+import router from 'next/router'
+import React, { useEffect as effect, useState as state} from 'react'
 import {findAsistencia, updateAsistencia} from '../../../data/asistencia'
 import InputForm from '../../../components/InputFormEx'
 import TextareaForm from '../../../components/TextareaFormEx'
@@ -16,10 +16,8 @@ export const getServerSideProps = async (context) => {
 }
 
 const update = ({data}) => {
-    const router = useRouter()
-    const toast = useToast()
-    const [asistentes, setAsistentes] = useState([])
-    const [asistencias, setAsistencias] = useState(data)
+    const [asistentes, setAsistentes] = state([])
+    const [asistencias, setAsistencias] = state(data)
     const {asistencia} = router.query
 
     const handleChange = (e) => {
@@ -53,7 +51,7 @@ const update = ({data}) => {
       }
       
 
-    useEffect(() => {
+      effect(() => {
         getAsistentes().then(res =>{
             setAsistentes(res.data)
         })

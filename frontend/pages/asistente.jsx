@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, HStack, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
+import React, { useEffect as effect, useState as state} from 'react'
+import { Button, Container, Heading, HStack, Stack, Table, Tbody, Td, Thead, Tr} from '@chakra-ui/react'
 import {getAsistentes, delAsistente} from '../data/asistente'
-import {useRouter} from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 const asistente = () => {
-  const router = useRouter()
-  const toast = useToast()
-  const [asistentes, setAsistentes] = useState([{
+  const [asistentes, setAsistentes] = state([{
     _id:'',
     rut:'',
     nombre: '',
@@ -67,7 +65,7 @@ const asistente = () => {
     ))
   }
 
-  useEffect(() => {
+  effect(() => {
     getAsistentes().then(res =>{
       setAsistentes(res.data)
     })

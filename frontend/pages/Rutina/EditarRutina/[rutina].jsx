@@ -1,7 +1,7 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {BuscarRutina, UpdateRutina} from '../../../data/Rutina'
 import { Container, Heading, Stack, HStack, Button, Input, FormControl, FormLabel, Textarea} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 export const getServerSideProps = async (context) => {
@@ -14,9 +14,7 @@ export const getServerSideProps = async (context) => {
 }
 
 const Editar_Rutina = ({data}) => {
-    const [rutina, setRutina] = useState(data)
-    const router = useRouter()
-
+    const [rutina, setRutina] = state(data)
     const Consulta = (ruti)=>{
       if(ruti.educadora!=null){
           return(ruti.educadora.nombre)

@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {BuscarEducadora, DeleteEducadora} from '../../../data/Educadora'
 import { Heading, Stack, Card, CardHeader, StackDivider, CardBody, Box, Button,  Container, HStack, Text} from '@chakra-ui/react'
 import Swal from 'sweetalert2'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 
 export const getServerSideProps = async (context) => {
     const response = await BuscarEducadora(context.query.educadora)
@@ -14,8 +14,7 @@ export const getServerSideProps = async (context) => {
 }
 
     const VerEducadora = ({data}) => {
-        const [educadora] = useState(data)
-        const router = useRouter()
+        const [educadora] = state(data)
 
         const Eliminar= ( id) =>{
             DeleteEducadora(id)

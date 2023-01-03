@@ -10,3 +10,4 @@ api.delete('/user/delete/:id', userController.delUser)
 api.post('/user/login', checkRUT)
 
 module.exports = api
+module.exports = api

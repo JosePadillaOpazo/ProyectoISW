@@ -1,20 +1,17 @@
-import {useState, useEffect} from 'react'
+import {useState as state, useEffect as effect} from 'react'
 import {CrearRutina} from '../../../data/Rutina'
 import {BuscarGrados} from '../../../data/Grado'
 import {BuscarEducadoras} from '../../../data/Educadora'
 import { Container, Heading, Stack, FormControl, FormLabel, Input, Select, Button, Textarea, HStack} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 const Crear_Rutina = () => {
-
   const hoy = new Date().toLocaleDateString();
-  const router = useRouter()
+  const [grado, setGrado] = state([])
+  const [educadora, setEducadora] = state([])
 
-  const [grado, setGrado] = useState([])
-  const [educadora, setEducadora] = useState([])
-
-  useEffect(() => {
+  effect(() => {
     BuscarGrados().then(res => {
       setGrado(res.data)
     })
@@ -23,7 +20,7 @@ const Crear_Rutina = () => {
     })
 }, [])
 
-  const [rutina, setRutina] = useState({
+  const [rutina, setRutina] = state({
     fecha: Date.now('cl-CL'),
     grado: '',
     educadora: '',

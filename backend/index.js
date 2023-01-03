@@ -24,10 +24,20 @@ app.options('*', cors());
 app.use('/api', EducadoraRoutes);
 app.use('/api', RutinaRoutes);
 app.use('/api', GradoRoutes);
+app.use('/api', EducadoraRoutes);
+app.use('/api', RutinaRoutes);
+app.use('/api', GradoRoutes);
 app.use('/api', rutaantecedente);
 app.use ('/api', rutapoderado);
 app.use ('/api', rutaenfermedad);
 app.use ('/api', rutadiscapacidad);
+app.use('/api', asistenteRoutes)
+app.use('/api', asistenciaRoutes)
+app.use ('/api', rutaMatriculas);
+app.use ('/api', rutaParvulos);
+app.use('/api', userRoutes)
+app.use('/api', asistenciaParvuloRoutes)
+
 app.use('/api', asistenteRoutes)
 app.use('/api', asistenciaRoutes)
 app.use ('/api', rutaMatriculas);

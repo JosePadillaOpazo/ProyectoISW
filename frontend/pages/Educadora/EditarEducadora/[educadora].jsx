@@ -1,8 +1,8 @@
-import {useState} from 'react'
+import {useState as state} from 'react'
 import {BuscarEducadora, UpdateEducadora} from '../../../data/Educadora'
 import { Container, Heading, Stack,  Button,  HStack} from '@chakra-ui/react'
 import InputForm from '../../../Components/InputForm'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 export const getServerSideProps = async (context) => {
@@ -15,10 +15,9 @@ export const getServerSideProps = async (context) => {
 }
 
 const EditarEducadora = ({data}) => {
-    const [educadora, setEducadora] = useState(data)
+    const [educadora, setEducadora] = state(data)
     console.log(educadora)
 
-    const router = useRouter()
 
       const submitEducadora = async (e) =>{
         e.preventDefault()

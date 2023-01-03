@@ -1,7 +1,7 @@
-import { Container,useToast,  Heading, Stack,Text , Table, Thead, Tr, Td, Tbody, Button, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, ModalFooter, HStack, Spacer } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { Container,useToast as toast,  Heading, Stack,Text , Table, Thead, Tr, Td, Tbody, Button, useDisclosure as disclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, ModalFooter, HStack, Spacer } from '@chakra-ui/react'
+import React, { useEffect as effect, useState as state} from 'react'
 import {findAsistencia, findAsistenciaParvulo, getParvulos, addParvuloAsistencia, delParvuloAsistencia} from '../../../data/asistencia'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import SelectForm from '../../../components/SelectFormEx'
 import Swal from 'sweetalert2'
 
@@ -19,12 +19,10 @@ export const getServerSideProps = async (context) => {
 
 
 const mostrar = ({asistencia, asistenciaParvulo }) => {
-    const router = useRouter()
-    const toast = useToast()
-    const [pselected, setPselected] = useState()
-    const {isOpen, onOpen, onClose} = useDisclosure()
-    const [parvulo, setParvulo] = useState([])
-    const [asisClase, setasisClase] = useState({
+    const [pselected, setPselected] = state()
+    const {isOpen, onOpen, onClose} = disclosure()
+    const [parvulo, setParvulo] = state([])
+    const [asisClase, setasisClase] = state({
       idAsistencia:asistencia._id,
       idParvulo:''
     })
@@ -121,7 +119,7 @@ const mostrar = ({asistencia, asistenciaParvulo }) => {
       })
     }
 
-    useEffect(() => {
+    effect(() => {
       getParvulos().then(res =>{
         setParvulo(res.data)
       })
