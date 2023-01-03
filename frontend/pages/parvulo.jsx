@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect as effect, useState as state} from 'react'
 import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getParvulos, delParvulo} from '../data/parvulo'
-import {useRouter} from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 const parvulo = () => {
-  const router = useRouter()
-  const [parvulos, setParvulos] = useState([{
+  const [parvulos, setParvulos] = state([{
     
     _id:'',
     rut:'',
@@ -67,7 +66,7 @@ const parvulo = () => {
 
 
 
-  useEffect(() => {
+  effect(() => {
     getParvulos().then(res =>{
 
       setParvulos(res.data)

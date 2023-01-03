@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState as state,useEffect as effect} from 'react'
 import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast } from '@chakra-ui/react'
-import {useRouter} from 'next/router'
+import router from 'next/router'
 import {addParvulo} from '../data/parvulo'
 import SelectForm from '../components/SelectForm'
 import InputForm from '../components/InputForm'
@@ -8,10 +8,8 @@ import {BuscarGrados} from '../data/Grado'
 
 
 const registroParvulo = () => {
-  const router = useRouter()
-  const toast = useToast()
-  const [grados, setGrados] = useState([])
-  const [parvulo, setParvulos] = useState([])
+  const [grados, setGrados] = state([])
+  const [parvulo, setParvulos] = state([])
 
   const handleChange = (e) => {
     setParvulos({
@@ -33,20 +31,13 @@ const registroParvulo = () => {
     e.preventDefault()
     addParvulo(parvulo).then(res => {
       if(res.status == '200'){
-        toast({
-        title: 'Parvulo registrado',
-        description: "El Parvulo se ha registrado correctamente.",
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      })
       router.push('./parvulo')
     }
     })
   }
 
 
-  useEffect(() => {
+  effect(() => {
     BuscarGrados().then(res =>{
 
       setGrados(res.data)

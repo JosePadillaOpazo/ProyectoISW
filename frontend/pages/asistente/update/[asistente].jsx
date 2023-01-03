@@ -28,13 +28,6 @@ const editar = ({data}) => {
     e.preventDefault()
     updateAsistente(asistente, asistentec).then(res => {
       if(res.status == '200'){
-        toast({
-          title: 'Asistente actualizado',
-          description: "El asistente se ha actualizado correctamente.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        })
         router.push('/asistente')
       }
     })

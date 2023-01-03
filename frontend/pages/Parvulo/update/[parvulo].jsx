@@ -1,8 +1,8 @@
-import {useState,useEffect} from 'react'
+import {useState as state,useEffect as effect} from 'react'
 import {findParvulo, updateParvulo} from '../../../data/parvulo'
 import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast } from '@chakra-ui/react'
 import InputForm from '../../../components/InputForm'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import SelectForm from '../../../components/SelectForm'
 import {BuscarGrados} from '../../../data/Grado'
 
@@ -21,10 +21,8 @@ export const getServerSideProps = async (context) => {
 
 
 const editar = ({data}) => {
-  const [parvuloc, setParvuloc] = useState(data)
-  const [grados, setGrados] = useState([])
-  const router = useRouter()
-  const toast = useToast()
+  const [parvuloc, setParvuloc] = state(data)
+  const [grados, setGrados] = state([])
   const {parvulo} = router.query
 
   const handleChange = (e) => {
@@ -38,13 +36,6 @@ const editar = ({data}) => {
     e.preventDefault()
     updateParvulo(parvulo, parvuloc).then(res => {
       if(res.status == '200'){
-        toast({
-          title: 'parvulo actualizado',
-          description: "El parvulo se ha actualizado correctamente.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        })
         router.push('/parvulo')
       }
     })
@@ -59,7 +50,7 @@ const editar = ({data}) => {
   }
 
 
-  useEffect(() => {
+  effect(() => {
     BuscarGrados().then(res =>{
 
       setGrados(res.data)

@@ -1,7 +1,7 @@
-import {useState,useEffect} from 'react'
+import {useState as state,useEffect as effect} from 'react'
 import {findMatricula, updateMatricula} from '../../data/matricula'
 import { Container, Stack, Heading, FormControl, FormLabel, InputGroup, InputLeftAddon, Input, HStack, Button, useToast } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import SelectForm from '../../components/SelectForm'
 import InputForm from '../../components/InputForm'
 import {getParvulos} from '../../data/parvulo'
@@ -21,11 +21,9 @@ export const getServerSideProps = async (context) => {
 
 
 const editar = ({data}) => {
-  const [matriculac, setMatriculac] = useState(data)
-  const [parvulos, setParvulos] = useState([])
-  const [apoderados, setApoderados] = useState([])
-  const router = useRouter()
-  const toast = useToast()
+  const [matriculac, setMatriculac] = state(data)
+  const [parvulos, setParvulos] = state([])
+  const [apoderados, setApoderados] = state([])
   const {matricula} = router.query
 
   const handleChange = (e) => {
@@ -39,13 +37,6 @@ const editar = ({data}) => {
     e.preventDefault()
     updateMatricula(matricula, matriculac).then(res => {
       if(res.status == '200'){
-        toast({
-          title: 'matricula actualizado',
-          description: "El matricula se ha actualizado correctamente.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-        })
         router.push('/matricula')
       }
     })
@@ -65,7 +56,7 @@ const editar = ({data}) => {
     ))
   }
 
-  useEffect(() => {
+  effect(() => {
     getParvulos().then(res =>{
       setParvulos(res.data)     
     })

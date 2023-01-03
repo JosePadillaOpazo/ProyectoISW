@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect as effect, useState as state} from 'react'
 import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getMatriculas, delMatricula} from '../data/matricula'
-import {useRouter} from 'next/router'
+import router from 'next/router'
 import Swal from 'sweetalert2'
 
 const matricula = () => {
-  const router = useRouter();
-  const [matriculas, setMatriculas] = useState([{
+  const [matriculas, setMatriculas] = state([{
     fecha: '',
     valor: '',
     abono: '',
@@ -85,7 +84,7 @@ if(apoderado!=null){
     ))
   }
 
-  useEffect(() => {
+  effect(() => {
     getMatriculas().then(res =>{
 
       setMatriculas(res.data)

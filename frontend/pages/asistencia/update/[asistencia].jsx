@@ -38,13 +38,6 @@ const update = ({data}) => {
         e.preventDefault()
         updateAsistencia(asistencia, asistencias).then(res => {
           if(res.status == '200'){
-              toast({
-              title: 'Asistencia actualizada',
-              description: "La asistencia se ha actualizado correctamente.",
-              status: 'success',
-              duration: 2000,
-              isClosable: true,
-            })
             router.push('/asistencia')
           }
         })

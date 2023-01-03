@@ -1,22 +1,19 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState as state,useEffect as effect} from 'react'
 import { Button, Container, FormControl, FormLabel, Heading, HStack, Input, InputGroup, InputLeftAddon, Stack, useToast } from '@chakra-ui/react'
-import {useRouter} from 'next/router'
+import router from 'next/router'
 import {addMatricula} from '../data/matricula'
 import InputForm from '../components/InputForm'
 import SelectForm from '../components/SelectForm'
-import Select from 'react-select';
 import {getParvulos} from '../data/parvulo'
 import {getApoderados} from '../data/apoderado'
 
 
 
 const registroMatricula = () => {
-  const router = useRouter()
-  const toast = useToast()
-  const [parvulos, setParvulos] = useState([])
-  const [apoderados, setApoderados] = useState([])
+  const [parvulos, setParvulos] = state([])
+  const [apoderados, setApoderados] = state([])
 
-  const [matricula, setMatriculas] = useState([])
+  const [matricula, setMatriculas] = state([])
 
   const handleChange = (e) => {
     setMatriculas({
@@ -25,7 +22,7 @@ const registroMatricula = () => {
     })
   }
  
-  useEffect(() => {
+  effect(() => {
     getParvulos().then(res =>{
       setParvulos(res.data)     
     })
@@ -58,13 +55,6 @@ const registroMatricula = () => {
     e.preventDefault()
     addMatricula(matricula).then(res => {
       if(res.status == '200'){
-        toast({
-        title: 'Matricula registrada',
-        description: "La matricula se ha registrado correctamente.",
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      })
       router.push('./matricula')
     }
     })
