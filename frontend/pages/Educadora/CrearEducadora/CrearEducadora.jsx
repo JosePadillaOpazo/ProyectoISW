@@ -1,7 +1,7 @@
 import {useState as state} from 'react'
 import {CrearEducadora} from '../../../data/Educadora'
 import { Heading, Stack, FormControl, FormLabel, Input, Button, Container, HStack, Text} from '@chakra-ui/react'
-import InputForm from '../../../components/InputForm'
+import InputFormEdu from '../../../components/InputFormEdu'
 import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 
@@ -57,11 +57,11 @@ const Crear_Educadora = () => {
         <Container maxW='container.lg' marginTop={'40'}>
           <form onSubmit={submitEducadora} id="form">
             <Stack spacing={7} >
-            <InputForm label="Rut" type="text" name="rut" placeholder="Ingrese Rut" min={9} max={10} handlechange={handleChange} />
-            <InputForm label="Nombre Completo" type="text" name="nombre" placeholder="Ingrese Nombre Completo" min={5} handlechange={handleChange}/>
-            <InputForm label="Dirección" type="text" name="direccion" placeholder="Ingrese Dirección" min={5} handlechange={handleChange}/>
-            <InputForm label="Telefono" type="number" name="telefono1" placeholder="Ingrese Telefono" min={8} max={9} handlechange={handleChange} />
-            <InputForm label="Correo" type="email" name="correo" placeholder="Ingrese Correo" handlechange={handleChange} />
+            <InputFormEdu label="Rut" type="text" name="rut" placeholder="Ingrese Rut" min={9} max={10} handlechange={handleChange} />
+            <InputFormEdu label="Nombre Completo" type="text" name="nombre" placeholder="Ingrese Nombre Completo" min={5} handlechange={handleChange}/>
+            <InputFormEdu label="Dirección" type="text" name="direccion" placeholder="Ingrese Dirección" min={5} handlechange={handleChange}/>
+            <InputFormEdu label="Telefono" type="number" name="telefono1" placeholder="Ingrese Telefono" min={8} max={9} handlechange={handleChange} />
+            <InputFormEdu label="Correo" type="email" name="correo" placeholder="Ingrese Correo" handlechange={handleChange} />
             <FormControl id="fecha_de_nac">
               <FormLabel>Fecha de Nacimiento</FormLabel>
             <Input variant={'filled'} type={'date'} name={"fecha_de_nac"}  onChange={handleChange}></Input>
