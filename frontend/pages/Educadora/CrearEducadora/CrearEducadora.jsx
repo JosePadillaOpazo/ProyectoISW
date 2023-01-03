@@ -1,8 +1,8 @@
 import {useState as state} from 'react'
 import {CrearEducadora} from '../../../data/Educadora'
 import { Heading, Stack, FormControl, FormLabel, Input, Button, Container, HStack, Text} from '@chakra-ui/react'
-import InputForm from '../../../Components/InputForm'
-import router from 'next/router'
+import InputForm from '../../../components/InputForm'
+import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 
 

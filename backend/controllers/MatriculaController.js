@@ -52,8 +52,18 @@ const CrearMatricula = (req, res) =>{
 }
 
 const VerMatricula = (req, res) =>{
-    Matricula.find({},
-        (err, Matricula) => {
+    Matricula.find().populate({path :'parvulo apoderado apoderado2 apoderado3'}).exec((err, Matricula) => {
+            if(err){
+                return res.status(400).send({message:"Error al obtener el Matricula"})
+            }
+            return res.status(200).send(Matricula)
+        }
+    )
+}
+
+const buscarMatriculaEspecifica = (req, res) =>{
+    const { id } = req.params;
+    Matricula.findById(id).populate({path :'parvulo apoderado apoderado2 apoderado3'}).exec((err, Matricula) =>{
             if(err){
                 return res.status(400).send({message:"Error al obtener matricula"})
             }
@@ -93,6 +103,7 @@ const EliminarMatricula = (req, res) =>{
 module.exports = {
     CrearMatricula,
     VerMatricula,
+    buscarMatriculaEspecifica,
     ActualizarMatricula,
     EliminarMatricula
 }

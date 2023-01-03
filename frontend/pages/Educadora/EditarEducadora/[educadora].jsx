@@ -1,8 +1,8 @@
 import {useState as state} from 'react'
 import {BuscarEducadora, UpdateEducadora} from '../../../data/Educadora'
 import { Container, Heading, Stack,  Button,  HStack} from '@chakra-ui/react'
-import InputForm from '../../../Components/InputForm'
-import router from 'next/router'
+import InputForm from '../../../components/InputForm'
+import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 
 export const getServerSideProps = async (context) => {
