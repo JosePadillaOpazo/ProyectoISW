@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, HStack, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
+import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getParvulos, delParvulo} from '../data/parvulo'
 import {useRouter} from 'next/router'
 import Swal from 'sweetalert2'
@@ -52,14 +52,12 @@ const parvulo = () => {
           <Td>{parvulo.grado.grado}</Td>
 
           <Td>
-            <HStack>
-              <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./Parvulo/update/${parvulo._id}`)}>
-                Editar
-              </Button>
-              <Button colorScheme={"red"} onClick={() => deleteParvulo(parvulo)} >
-                Eliminar
-              </Button>
-            </HStack>
+            <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./Parvulo/update/${parvulo._id}`)}>
+              Editar
+            </Button>
+            <Button colorScheme={"red"} onClick={() => deleteParvulo(parvulo)} >
+              Eliminar
+            </Button>
           </Td>
         </Tr>
       )
@@ -81,8 +79,8 @@ const parvulo = () => {
 
   return (
     <>
-    <Container maxW="container.xl" my="40" >
-      <Heading as={'h1'} size='2xl' textColor={'black'} textAlign={'center'} mt='15'>Parvulo</Heading>
+    <Container maxW="container.xl" my="40">
+      <Heading as="h1" size="2xl" textAlign="center" my={20}>Parvulo</Heading>
       <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.replace('./registroParvulo')}>Agregar parvulo</Button>
       <Stack spacing={7}> 
         <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge'>

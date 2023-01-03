@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Heading, Stack, HStack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
+import { Button, Container, Heading, Stack, Table, Tbody, Td, Thead, Tr, useToast } from '@chakra-ui/react'
 import {getMatriculas, delMatricula} from '../data/matricula'
 import {useRouter} from 'next/router'
 import Swal from 'sweetalert2'
 
 const matricula = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [matriculas, setMatriculas] = useState([{
     fecha: '',
     valor: '',
@@ -53,7 +53,7 @@ const buscarApoderado = (apoderado) =>{
 if(apoderado!=null){
   return apoderado.nombre
 }else{
-  return "Apoderado inexistente"
+  return "    -     "
 }
 
 
@@ -73,14 +73,12 @@ if(apoderado!=null){
 
 
           <Td>
-          <HStack>
             <Button colorScheme={"yellow"} mr="2" onClick={() => router.push(`./matricula/${matricula._id}`)}>
               Editar
             </Button>
             <Button colorScheme={"red"} onClick={() => deleteMatricula(matricula)} >
               Eliminar
             </Button>
-          </HStack>
           </Td>
         </Tr>
       )
@@ -98,8 +96,8 @@ if(apoderado!=null){
 
   return (
     <>
-    <Container maxW="container.xl" my="40">
-      <Heading as={'h1'} size='2xl' textColor={'black'} textAlign={'center'} mt='15'>Matricula</Heading>
+    <Container maxW="container.xl" my="40" >
+      <Heading as="h1" size="2xl" textAlign="center" my={20}>Matricula</Heading>
       <Button colorScheme={"green"} mt="10" mb={10} onClick={() => router.replace('./registroMatricula')}>Agregar Matricula</Button>
       <Stack spacing={7}> 
         <Table variant='striped' colorScheme={"cyan"} border={'8px'} borderStyle='ridge'>

@@ -1,12 +1,13 @@
+import { FormControl, FormLabel, Input } from '@chakra-ui/react'
 import React from 'react'
-import { FormControl, FormLabel, Input} from '@chakra-ui/react'
 
-const InputForm = ({name, placeholder, handlechange, label, value, type, min, max}) => {
+const InputForm = ({label, handleChange, name, placeholder, type, value}) => {
   return (
-    <FormControl id={name} isRequired>
+    <FormControl id={name}>
         <FormLabel>{label}</FormLabel>
-        <Input variant={"filled"} type={type} name={name} placeholder={placeholder} onChange={handlechange} minLength={min} maxLength={max} value={value}/>
-    </FormControl>  )
+        <Input type={type} placeholder={placeholder} name={name} onChange={handleChange} value={value}/>
+    </FormControl>
+  )
 }
 
 export default InputForm
