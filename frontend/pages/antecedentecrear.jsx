@@ -3,7 +3,7 @@ import { Button, Container, Heading, Stack, Select, Table, Tbody, Td, Thead, Tr,
 
 import router from 'next/router'
 
-import {VerParvulo} from '../antmedico/parvulo'
+import {getParvulos} from '../data/parvulo'
 import {VerEnfermedad} from '../antmedico/enfermedad'
 import {VerDiscapacidad} from '../antmedico/discapacidad'
 import {CrearAntecedente} from '../antmedico/antecedente'
@@ -19,7 +19,7 @@ const AntecedenteCrear = () => {
   
 
   effect(() => {
-    VerParvulo().then(res => {
+    getParvulos().then(res => {
         verParvulo(res.data)
       })
     

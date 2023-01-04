@@ -16,6 +16,8 @@ const Crear_Educadora = () => {
     correo: ''
   })
 
+  const router = useRouter()
+
   const submitEducadora = async (e) =>{
     e.preventDefault()
     const response = await CrearEducadora(educadora)
